@@ -1,0 +1,66 @@
+﻿@model Roshd.Classes.Login.PLogin
+@{
+    ViewBag.Title = "سامانه رشد - ورود";
+    Layout = "~/Views/Shared/Base_Layout.cshtml";
+}
+
+
+
+@section css {
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Content/LoginPage/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/LoginPage/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/LoginPage/css/main.css">
+    <!--===============================================================================================-->
+}
+
+
+
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-b-160 p-t-50">
+      @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "validate-form" }))
+      {
+    @Html.AntiForgeryToken()
+                <div class="login100-form ">
+                    <span class="login100-form-title p-b-43" style="font-family: IranNastaliq; font-size: 29px;">
+                        سامانه رشد
+                    </span>
+
+             
+
+                    <div class="wrap-input100 rs2 validate-input" data-validate="نام کاربری را وارد کنید">
+                        @Html.TextBoxFor(Model => Model.UserName, new { @class = "input100 EnClass" })
+                        <span class="label-input100 PerClass"  >نام کاربری</span>
+                    </div>
+                    <div class="wrap-input100 rs1 validate-input" data-validate="رمز عبور را وارد کنید">
+                        @Html.PasswordFor(Model => Model.Password, new { @class = "input100 EnClass" })
+                        <span class="label-input100 PerClass">رمز عبور</span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <input type="submit" class="login100-form-btn" value="ورود" />
+                        <div style="border-radius: 10px; margin-bottom: 5px; background-color: red; margin: 10px 50px; color: white;">@Session["Message"] </div>
+
+                    </div>
+                   
+
+                    <div class="text-center w-full p-t-23">
+                        <a href="/Registration/Signup" class="txt1">
+                            ثبت نام در سامانه
+                        </a>
+                    </div>
+                </div>
+      }
+           
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Content/LoginPage/js/main.js"></script>
+}
+

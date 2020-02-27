@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<body>
+    <div class="row" style="margin-top:10px">
+        <div style="margin-right: 35px; cursor: pointer; position: fixed; z-index: 10; margin-top: -30px">
+            <img id="HideTreeMenu" src="~/Images/Close.png" width="25" />
+            <img id="ShowTreeMenu" src="~/Images/Open.png" width="25" style="display:none" />
+        </div>
+        <div id="TreeMenu" class=" col-md-3" style="position:fixed;overflow-y:scroll;height:300px;margin-left:5px ">
+
+        </div>
+        <img id="LoadShowForm" src="~/Images/NewLoader.gif" style="float: left; width: 15%; position: fixed; margin-right: 50%; z-index: 10;display:none " />
+        <div id="ShowForm" class="col-md-9" style="float: left; overflow-y: auto; height: 80%; background-color: #e9edee;padding:50px">
+
+        </div>
+    </div>
+</body>
+
+@section scripts{
+
+
+    <script type="text/javascript">
+        TreeMenu(5);
+        //function selectedmenu() {
+        //    $('#' + 3).css('margin-top', '30px')
+        //}
+
+    </script>
+}

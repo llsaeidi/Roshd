@@ -1,0 +1,2376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RoshdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistrictID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="LatinTitle" Type="varchar" MaxLength="100" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Counties">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProvinceID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="LatinTitle" Type="varchar" MaxLength="100" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="DepartmentOfEducations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="MemberID" Type="int" />
+        </EntityType>
+        <EntityType Name="Districts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountyID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="LatinTitle" Type="varchar" MaxLength="100" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="EducationalCrossSections">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Score" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="MemberID" Type="int" />
+        </EntityType>
+        <EntityType Name="EducationalFields">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentOfEducationID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" />
+          <Property Name="Score" Type="int" />
+          <Property Name="RelatedField" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="MemberID" Type="int" />
+        </EntityType>
+        <EntityType Name="FileExtensions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="IsDownload" Type="bit" />
+        </EntityType>
+        <EntityType Name="Honors">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberShipID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="FileContent" Type="varbinary(max)" />
+          <Property Name="ExtensionID" Type="int" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="JobRecordsInOrganizations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberShipID" Type="int" />
+          <Property Name="BranchID" Type="int" />
+          <Property Name="BranchName" Type="nvarchar" MaxLength="100" />
+          <Property Name="BranchOrganID" Type="int" />
+          <Property Name="BranchOrganName" Type="nvarchar" MaxLength="100" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FromDate" Type="date" />
+          <Property Name="ToDate" Type="date" />
+          <Property Name="FileContent" Type="varbinary(max)" />
+          <Property Name="ExtensionID" Type="int" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="JobRecordsOutOfOrganizations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberShipID" Type="int" />
+          <Property Name="CountyID" Type="int" />
+          <Property Name="OrganizationName" Type="nvarchar" MaxLength="100" />
+          <Property Name="UnitName" Type="nvarchar" MaxLength="100" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FromDate" Type="date" />
+          <Property Name="ToDate" Type="date" />
+          <Property Name="FileContent" Type="varbinary(max)" />
+          <Property Name="ExtensionID" Type="int" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="MemberEducations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberShipID" Type="int" />
+          <Property Name="EducationalFieldID" Type="int" />
+          <Property Name="EducationalCrossSectionID" Type="int" />
+          <Property Name="CanDelete" Type="bit" />
+          <Property Name="UniversityName" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountyID" Type="int" />
+          <Property Name="FinalScore" Type="float" />
+          <Property Name="FileContent" Type="varbinary(max)" />
+          <Property Name="ExtensionID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="MemberID" Type="int" />
+        </EntityType>
+        <EntityType Name="MemberShip">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Gender" Type="char" MaxLength="1" />
+          <Property Name="BirthOfDate" Type="date" />
+          <Property Name="NationalCode" Type="char" MaxLength="11" />
+          <Property Name="PersonnelCode" Type="varchar" MaxLength="15" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="12" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="12" />
+          <Property Name="ConfirmationCode" Type="char" MaxLength="6" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Password" Type="nvarchar" MaxLength="1000" />
+          <Property Name="CreateDate" Type="date" />
+          <Property Name="SubmitDate" Type="date" />
+          <Property Name="FailedPasswordCount" Type="int" />
+          <Property Name="AdminLockDate" Type="date" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="ProfilePic" Type="image" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Organizations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="PresentedArticles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberShipID" Type="int" />
+          <Property Name="ConferenceTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="ArticlesTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="PresentedDate" Type="date" />
+          <Property Name="FileContent" Type="varbinary(max)" />
+          <Property Name="ExtensionID" Type="int" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Provinces">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="LatinTitle" Type="varchar" MaxLength="100" />
+          <Property Name="ProvinceGroupID" Type="int" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="PublishedArticles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberShipID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="MagazineName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MagazineNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="MagazineDate" Type="date" />
+          <Property Name="FileContent" Type="varbinary(max)" />
+          <Property Name="ExtensionID" Type="int" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="SpecializedExperiences">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberShipID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="FileContent" Type="varbinary(max)" />
+          <Property Name="ExtensionID" Type="int" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Thesis">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberShipID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="EducationalCrossSectionID" Type="int" />
+          <Property Name="UniversityName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Supervisor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Score" Type="float" />
+          <Property Name="FileContent" Type="varbinary(max)" />
+          <Property Name="ExtensionID" Type="int" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="ApplicationMenus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="250" />
+          <Property Name="MenuURL" Type="varchar" MaxLength="250" />
+          <Property Name="MenuOrder" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="ApplicationPages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PID" Type="int" />
+          <Property Name="PageName" Type="nvarchar" MaxLength="250" />
+          <Property Name="MenuID" Type="int" />
+          <Property Name="PageAddres" Type="nvarchar" MaxLength="250" />
+          <Property Name="SubMenuOrder" Type="tinyint" />
+          <Property Name="Color" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Authorizations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="char" MaxLength="1" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="AccessTo" Type="int" />
+        </EntityType>
+        <EntityType Name="LookupControlForDelete">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrimaryTable" Type="nvarchar" MaxLength="100" />
+          <Property Name="ForeignTable" Type="nvarchar" MaxLength="100" />
+          <Property Name="ForeignField" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="MemberResponsibilities">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberShipID" Type="int" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="PagePartElements">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PagePatrID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" />
+          <Property Name="ClassName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Type" Type="char" MaxLength="1" />
+          <Property Name="FullMethod" Type="nvarchar" MaxLength="150" />
+          <Property Name="OperationButtonID" Type="int" />
+        </EntityType>
+        <EntityType Name="PagePatrs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicationPageID" Type="int" />
+          <Property Name="PartDivID" Type="nvarchar" MaxLength="250" />
+          <Property Name="PartName" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="RoleLevels">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" />
+          <Property Name="LevelOrder" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" />
+          <Property Name="RoleLevelID" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="MemberID" Type="int" />
+        </EntityType>
+        <Association Name="FK_ApplicationPages_ApplicationMenus">
+          <End Role="ApplicationMenus" Type="Self.ApplicationMenus" Multiplicity="0..1" />
+          <End Role="ApplicationPages" Type="Self.ApplicationPages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationMenus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationPages">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Authorizations_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Authorizations" Type="Self.Authorizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Authorizations">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cities_Districts">
+          <End Role="Districts" Type="Self.Districts" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="DistrictID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Counties_Provinces">
+          <End Role="Provinces" Type="Self.Provinces" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Counties" Type="Self.Counties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Counties">
+              <PropertyRef Name="ProvinceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Districts_Counties">
+          <End Role="Counties" Type="Self.Counties" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Districts" Type="Self.Districts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Counties">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Districts">
+              <PropertyRef Name="CountyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EducationalFields_DepartmentOfEducations">
+          <End Role="DepartmentOfEducations" Type="Self.DepartmentOfEducations" Multiplicity="0..1" />
+          <End Role="EducationalFields" Type="Self.EducationalFields" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentOfEducations">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EducationalFields">
+              <PropertyRef Name="DepartmentOfEducationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Honors_FileExtensions">
+          <End Role="FileExtensions" Type="Self.FileExtensions" Multiplicity="0..1" />
+          <End Role="Honors" Type="Self.Honors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileExtensions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Honors">
+              <PropertyRef Name="ExtensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Honors_MemberShip">
+          <End Role="MemberShip" Type="Self.MemberShip" Multiplicity="0..1" />
+          <End Role="Honors" Type="Self.Honors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Honors">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobRecordsInOrganizations_FileExtensions">
+          <End Role="FileExtensions" Type="Self.FileExtensions" Multiplicity="0..1" />
+          <End Role="JobRecordsInOrganizations" Type="Self.JobRecordsInOrganizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileExtensions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobRecordsInOrganizations">
+              <PropertyRef Name="ExtensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobRecordsInOrganizations_MemberShip">
+          <End Role="MemberShip" Type="Self.MemberShip" Multiplicity="0..1" />
+          <End Role="JobRecordsInOrganizations" Type="Self.JobRecordsInOrganizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobRecordsInOrganizations">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobRecordsOutOfOrganizations_Counties">
+          <End Role="Counties" Type="Self.Counties" Multiplicity="0..1" />
+          <End Role="JobRecordsOutOfOrganizations" Type="Self.JobRecordsOutOfOrganizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Counties">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobRecordsOutOfOrganizations">
+              <PropertyRef Name="CountyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobRecordsOutOfOrganizations_FileExtensions">
+          <End Role="FileExtensions" Type="Self.FileExtensions" Multiplicity="0..1" />
+          <End Role="JobRecordsOutOfOrganizations" Type="Self.JobRecordsOutOfOrganizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileExtensions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobRecordsOutOfOrganizations">
+              <PropertyRef Name="ExtensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobRecordsOutOfOrganizations_MemberShip">
+          <End Role="MemberShip" Type="Self.MemberShip" Multiplicity="0..1" />
+          <End Role="JobRecordsOutOfOrganizations" Type="Self.JobRecordsOutOfOrganizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobRecordsOutOfOrganizations">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberEducations_Counties">
+          <End Role="Counties" Type="Self.Counties" Multiplicity="0..1" />
+          <End Role="MemberEducations" Type="Self.MemberEducations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Counties">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberEducations">
+              <PropertyRef Name="CountyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberEducations_EducationalCrossSections">
+          <End Role="EducationalCrossSections" Type="Self.EducationalCrossSections" Multiplicity="0..1" />
+          <End Role="MemberEducations" Type="Self.MemberEducations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EducationalCrossSections">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberEducations">
+              <PropertyRef Name="EducationalCrossSectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberEducations_EducationalFields">
+          <End Role="EducationalFields" Type="Self.EducationalFields" Multiplicity="0..1" />
+          <End Role="MemberEducations" Type="Self.MemberEducations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EducationalFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberEducations">
+              <PropertyRef Name="EducationalFieldID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberEducations_FileExtensions">
+          <End Role="FileExtensions" Type="Self.FileExtensions" Multiplicity="0..1" />
+          <End Role="MemberEducations" Type="Self.MemberEducations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileExtensions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberEducations">
+              <PropertyRef Name="ExtensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberEducations_MemberShip">
+          <End Role="MemberShip" Type="Self.MemberShip" Multiplicity="0..1" />
+          <End Role="MemberEducations" Type="Self.MemberEducations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberEducations">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberResponsibilities_MemberShip">
+          <End Role="MemberShip" Type="Self.MemberShip" Multiplicity="0..1" />
+          <End Role="MemberResponsibilities" Type="Self.MemberResponsibilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberResponsibilities">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberResponsibilities_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="MemberResponsibilities" Type="Self.MemberResponsibilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberResponsibilities">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberShip_Organizations">
+          <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+          <End Role="MemberShip" Type="Self.MemberShip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberShip">
+              <PropertyRef Name="OrganizationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberShip_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="MemberShip" Type="Self.MemberShip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberShip">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PagePartElements_PagePatrs">
+          <End Role="PagePatrs" Type="Self.PagePatrs" Multiplicity="0..1" />
+          <End Role="PagePartElements" Type="Self.PagePartElements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PagePatrs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PagePartElements">
+              <PropertyRef Name="PagePatrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PagePatrs_ApplicationPages">
+          <End Role="ApplicationPages" Type="Self.ApplicationPages" Multiplicity="0..1" />
+          <End Role="PagePatrs" Type="Self.PagePatrs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationPages">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PagePatrs">
+              <PropertyRef Name="ApplicationPageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PresentedArticles_FileExtensions">
+          <End Role="FileExtensions" Type="Self.FileExtensions" Multiplicity="0..1" />
+          <End Role="PresentedArticles" Type="Self.PresentedArticles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileExtensions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PresentedArticles">
+              <PropertyRef Name="ExtensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PresentedArticles_MemberShip">
+          <End Role="MemberShip" Type="Self.MemberShip" Multiplicity="0..1" />
+          <End Role="PresentedArticles" Type="Self.PresentedArticles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PresentedArticles">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Provinces_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+          <End Role="Provinces" Type="Self.Provinces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Provinces">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PublishedArticles_FileExtensions">
+          <End Role="FileExtensions" Type="Self.FileExtensions" Multiplicity="0..1" />
+          <End Role="PublishedArticles" Type="Self.PublishedArticles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileExtensions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PublishedArticles">
+              <PropertyRef Name="ExtensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PublishedArticles_MemberShip">
+          <End Role="MemberShip" Type="Self.MemberShip" Multiplicity="0..1" />
+          <End Role="PublishedArticles" Type="Self.PublishedArticles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PublishedArticles">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Roles_RoleLevels">
+          <End Role="RoleLevels" Type="Self.RoleLevels" Multiplicity="0..1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleLevels">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="RoleLevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecializedExperiences_FileExtensions">
+          <End Role="FileExtensions" Type="Self.FileExtensions" Multiplicity="0..1" />
+          <End Role="SpecializedExperiences" Type="Self.SpecializedExperiences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileExtensions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SpecializedExperiences">
+              <PropertyRef Name="ExtensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecializedExperiences_MemberShip">
+          <End Role="MemberShip" Type="Self.MemberShip" Multiplicity="0..1" />
+          <End Role="SpecializedExperiences" Type="Self.SpecializedExperiences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SpecializedExperiences">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Thesis_EducationalCrossSections">
+          <End Role="EducationalCrossSections" Type="Self.EducationalCrossSections" Multiplicity="0..1" />
+          <End Role="Thesis" Type="Self.Thesis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EducationalCrossSections">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Thesis">
+              <PropertyRef Name="EducationalCrossSectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Thesis_FileExtensions">
+          <End Role="FileExtensions" Type="Self.FileExtensions" Multiplicity="0..1" />
+          <End Role="Thesis" Type="Self.Thesis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileExtensions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Thesis">
+              <PropertyRef Name="ExtensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Thesis_MemberShip">
+          <End Role="MemberShip" Type="Self.MemberShip" Multiplicity="0..1" />
+          <End Role="Thesis" Type="Self.Thesis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Thesis">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Key" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="fsf" />
+        <Function Name="spLookupsControlForDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="fsf">
+          <Parameter Name="PTable" Type="nvarchar" Mode="In" />
+          <Parameter Name="PField" Type="nvarchar" Mode="In" />
+          <Parameter Name="PCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="MemberID" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="RoshdModelStoreContainer">
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Counties" EntityType="Self.Counties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DepartmentOfEducations" EntityType="Self.DepartmentOfEducations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EducationalCrossSections" EntityType="Self.EducationalCrossSections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EducationalFields" EntityType="Self.EducationalFields" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FileExtensions" EntityType="Self.FileExtensions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Honors" EntityType="Self.Honors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobRecordsInOrganizations" EntityType="Self.JobRecordsInOrganizations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobRecordsOutOfOrganizations" EntityType="Self.JobRecordsOutOfOrganizations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MemberEducations" EntityType="Self.MemberEducations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MemberShip" EntityType="Self.MemberShip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organizations" EntityType="Self.Organizations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PresentedArticles" EntityType="Self.PresentedArticles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provinces" EntityType="Self.Provinces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PublishedArticles" EntityType="Self.PublishedArticles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecializedExperiences" EntityType="Self.SpecializedExperiences" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Thesis" EntityType="Self.Thesis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationMenus" EntityType="Self.ApplicationMenus" Schema="fsf" store:Type="Tables" />
+          <EntitySet Name="ApplicationPages" EntityType="Self.ApplicationPages" Schema="fsf" store:Type="Tables" />
+          <EntitySet Name="Authorizations" EntityType="Self.Authorizations" Schema="fsf" store:Type="Tables" />
+          <EntitySet Name="LookupControlForDelete" EntityType="Self.LookupControlForDelete" Schema="fsf" store:Type="Tables" />
+          <EntitySet Name="MemberResponsibilities" EntityType="Self.MemberResponsibilities" Schema="fsf" store:Type="Tables" />
+          <EntitySet Name="PagePartElements" EntityType="Self.PagePartElements" Schema="fsf" store:Type="Tables" />
+          <EntitySet Name="PagePatrs" EntityType="Self.PagePatrs" Schema="fsf" store:Type="Tables" />
+          <EntitySet Name="RoleLevels" EntityType="Self.RoleLevels" Schema="fsf" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="fsf" store:Type="Tables" />
+          <AssociationSet Name="FK_ApplicationPages_ApplicationMenus" Association="Self.FK_ApplicationPages_ApplicationMenus">
+            <End Role="ApplicationMenus" EntitySet="ApplicationMenus" />
+            <End Role="ApplicationPages" EntitySet="ApplicationPages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Authorizations_Roles" Association="Self.FK_Authorizations_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Authorizations" EntitySet="Authorizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cities_Districts" Association="Self.FK_Cities_Districts">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Counties_Provinces" Association="Self.FK_Counties_Provinces">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="Counties" EntitySet="Counties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Districts_Counties" Association="Self.FK_Districts_Counties">
+            <End Role="Counties" EntitySet="Counties" />
+            <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EducationalFields_DepartmentOfEducations" Association="Self.FK_EducationalFields_DepartmentOfEducations">
+            <End Role="DepartmentOfEducations" EntitySet="DepartmentOfEducations" />
+            <End Role="EducationalFields" EntitySet="EducationalFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Honors_FileExtensions" Association="Self.FK_Honors_FileExtensions">
+            <End Role="FileExtensions" EntitySet="FileExtensions" />
+            <End Role="Honors" EntitySet="Honors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Honors_MemberShip" Association="Self.FK_Honors_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShip" />
+            <End Role="Honors" EntitySet="Honors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobRecordsInOrganizations_FileExtensions" Association="Self.FK_JobRecordsInOrganizations_FileExtensions">
+            <End Role="FileExtensions" EntitySet="FileExtensions" />
+            <End Role="JobRecordsInOrganizations" EntitySet="JobRecordsInOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobRecordsInOrganizations_MemberShip" Association="Self.FK_JobRecordsInOrganizations_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShip" />
+            <End Role="JobRecordsInOrganizations" EntitySet="JobRecordsInOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobRecordsOutOfOrganizations_Counties" Association="Self.FK_JobRecordsOutOfOrganizations_Counties">
+            <End Role="Counties" EntitySet="Counties" />
+            <End Role="JobRecordsOutOfOrganizations" EntitySet="JobRecordsOutOfOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobRecordsOutOfOrganizations_FileExtensions" Association="Self.FK_JobRecordsOutOfOrganizations_FileExtensions">
+            <End Role="FileExtensions" EntitySet="FileExtensions" />
+            <End Role="JobRecordsOutOfOrganizations" EntitySet="JobRecordsOutOfOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobRecordsOutOfOrganizations_MemberShip" Association="Self.FK_JobRecordsOutOfOrganizations_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShip" />
+            <End Role="JobRecordsOutOfOrganizations" EntitySet="JobRecordsOutOfOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberEducations_Counties" Association="Self.FK_MemberEducations_Counties">
+            <End Role="Counties" EntitySet="Counties" />
+            <End Role="MemberEducations" EntitySet="MemberEducations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberEducations_EducationalCrossSections" Association="Self.FK_MemberEducations_EducationalCrossSections">
+            <End Role="EducationalCrossSections" EntitySet="EducationalCrossSections" />
+            <End Role="MemberEducations" EntitySet="MemberEducations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberEducations_EducationalFields" Association="Self.FK_MemberEducations_EducationalFields">
+            <End Role="EducationalFields" EntitySet="EducationalFields" />
+            <End Role="MemberEducations" EntitySet="MemberEducations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberEducations_FileExtensions" Association="Self.FK_MemberEducations_FileExtensions">
+            <End Role="FileExtensions" EntitySet="FileExtensions" />
+            <End Role="MemberEducations" EntitySet="MemberEducations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberEducations_MemberShip" Association="Self.FK_MemberEducations_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShip" />
+            <End Role="MemberEducations" EntitySet="MemberEducations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberResponsibilities_MemberShip" Association="Self.FK_MemberResponsibilities_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShip" />
+            <End Role="MemberResponsibilities" EntitySet="MemberResponsibilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberResponsibilities_Roles" Association="Self.FK_MemberResponsibilities_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="MemberResponsibilities" EntitySet="MemberResponsibilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberShip_Organizations" Association="Self.FK_MemberShip_Organizations">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="MemberShip" EntitySet="MemberShip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberShip_Roles" Association="Self.FK_MemberShip_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="MemberShip" EntitySet="MemberShip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PagePartElements_PagePatrs" Association="Self.FK_PagePartElements_PagePatrs">
+            <End Role="PagePatrs" EntitySet="PagePatrs" />
+            <End Role="PagePartElements" EntitySet="PagePartElements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PagePatrs_ApplicationPages" Association="Self.FK_PagePatrs_ApplicationPages">
+            <End Role="ApplicationPages" EntitySet="ApplicationPages" />
+            <End Role="PagePatrs" EntitySet="PagePatrs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PresentedArticles_FileExtensions" Association="Self.FK_PresentedArticles_FileExtensions">
+            <End Role="FileExtensions" EntitySet="FileExtensions" />
+            <End Role="PresentedArticles" EntitySet="PresentedArticles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PresentedArticles_MemberShip" Association="Self.FK_PresentedArticles_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShip" />
+            <End Role="PresentedArticles" EntitySet="PresentedArticles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Provinces_Countries" Association="Self.FK_Provinces_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Provinces" EntitySet="Provinces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PublishedArticles_FileExtensions" Association="Self.FK_PublishedArticles_FileExtensions">
+            <End Role="FileExtensions" EntitySet="FileExtensions" />
+            <End Role="PublishedArticles" EntitySet="PublishedArticles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PublishedArticles_MemberShip" Association="Self.FK_PublishedArticles_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShip" />
+            <End Role="PublishedArticles" EntitySet="PublishedArticles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Roles_RoleLevels" Association="Self.FK_Roles_RoleLevels">
+            <End Role="RoleLevels" EntitySet="RoleLevels" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecializedExperiences_FileExtensions" Association="Self.FK_SpecializedExperiences_FileExtensions">
+            <End Role="FileExtensions" EntitySet="FileExtensions" />
+            <End Role="SpecializedExperiences" EntitySet="SpecializedExperiences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecializedExperiences_MemberShip" Association="Self.FK_SpecializedExperiences_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShip" />
+            <End Role="SpecializedExperiences" EntitySet="SpecializedExperiences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Thesis_EducationalCrossSections" Association="Self.FK_Thesis_EducationalCrossSections">
+            <End Role="EducationalCrossSections" EntitySet="EducationalCrossSections" />
+            <End Role="Thesis" EntitySet="Thesis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Thesis_FileExtensions" Association="Self.FK_Thesis_FileExtensions">
+            <End Role="FileExtensions" EntitySet="FileExtensions" />
+            <End Role="Thesis" EntitySet="Thesis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Thesis_MemberShip" Association="Self.FK_Thesis_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShip" />
+            <End Role="Thesis" EntitySet="Thesis" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RoshdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LatinTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="District" Relationship="Self.FK_Cities_Districts" FromRole="Cities" ToRole="Districts" />
+        </EntityType>
+        <EntityType Name="County">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProvinceID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LatinTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Province" Relationship="Self.FK_Counties_Provinces" FromRole="Counties" ToRole="Provinces" />
+          <NavigationProperty Name="Districts" Relationship="Self.FK_Districts_Counties" FromRole="Counties" ToRole="Districts" />
+          <NavigationProperty Name="JobRecordsOutOfOrganizations" Relationship="Self.FK_JobRecordsOutOfOrganizations_Counties" FromRole="Counties" ToRole="JobRecordsOutOfOrganizations" />
+          <NavigationProperty Name="MemberEducations" Relationship="Self.FK_MemberEducations_Counties" FromRole="Counties" ToRole="MemberEducations" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Provinces" Relationship="Self.FK_Provinces_Countries" FromRole="Countries" ToRole="Provinces" />
+        </EntityType>
+        <EntityType Name="DepartmentOfEducation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="MemberID" Type="Int32" />
+          <NavigationProperty Name="EducationalFields" Relationship="Self.FK_EducationalFields_DepartmentOfEducations" FromRole="DepartmentOfEducations" ToRole="EducationalFields" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountyID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LatinTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_Cities_Districts" FromRole="Districts" ToRole="Cities" />
+          <NavigationProperty Name="County" Relationship="Self.FK_Districts_Counties" FromRole="Districts" ToRole="Counties" />
+        </EntityType>
+        <EntityType Name="EducationalCrossSection">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Score" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="MemberID" Type="Int32" />
+          <NavigationProperty Name="MemberEducations" Relationship="Self.FK_MemberEducations_EducationalCrossSections" FromRole="EducationalCrossSections" ToRole="MemberEducations" />
+          <NavigationProperty Name="Theses" Relationship="Self.FK_Thesis_EducationalCrossSections" FromRole="EducationalCrossSections" ToRole="Thesis" />
+        </EntityType>
+        <EntityType Name="EducationalField">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentOfEducationID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Score" Type="Int32" />
+          <Property Name="RelatedField" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="MemberID" Type="Int32" />
+          <NavigationProperty Name="DepartmentOfEducation" Relationship="Self.FK_EducationalFields_DepartmentOfEducations" FromRole="EducationalFields" ToRole="DepartmentOfEducations" />
+          <NavigationProperty Name="MemberEducations" Relationship="Self.FK_MemberEducations_EducationalFields" FromRole="EducationalFields" ToRole="MemberEducations" />
+        </EntityType>
+        <EntityType Name="FileExtension">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDownload" Type="Boolean" />
+          <NavigationProperty Name="Honors" Relationship="Self.FK_Honors_FileExtensions" FromRole="FileExtensions" ToRole="Honors" />
+          <NavigationProperty Name="JobRecordsInOrganizations" Relationship="Self.FK_JobRecordsInOrganizations_FileExtensions" FromRole="FileExtensions" ToRole="JobRecordsInOrganizations" />
+          <NavigationProperty Name="JobRecordsOutOfOrganizations" Relationship="Self.FK_JobRecordsOutOfOrganizations_FileExtensions" FromRole="FileExtensions" ToRole="JobRecordsOutOfOrganizations" />
+          <NavigationProperty Name="MemberEducations" Relationship="Self.FK_MemberEducations_FileExtensions" FromRole="FileExtensions" ToRole="MemberEducations" />
+          <NavigationProperty Name="PresentedArticles" Relationship="Self.FK_PresentedArticles_FileExtensions" FromRole="FileExtensions" ToRole="PresentedArticles" />
+          <NavigationProperty Name="PublishedArticles" Relationship="Self.FK_PublishedArticles_FileExtensions" FromRole="FileExtensions" ToRole="PublishedArticles" />
+          <NavigationProperty Name="SpecializedExperiences" Relationship="Self.FK_SpecializedExperiences_FileExtensions" FromRole="FileExtensions" ToRole="SpecializedExperiences" />
+          <NavigationProperty Name="Theses" Relationship="Self.FK_Thesis_FileExtensions" FromRole="FileExtensions" ToRole="Thesis" />
+        </EntityType>
+        <EntityType Name="Honor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberShipID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="FileContent" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ExtensionID" Type="Int32" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="FileExtension" Relationship="Self.FK_Honors_FileExtensions" FromRole="Honors" ToRole="FileExtensions" />
+          <NavigationProperty Name="MemberShip" Relationship="RoshdModel.FK_Honors_MemberShip" FromRole="Honor" ToRole="MemberShip" />
+        </EntityType>
+        <EntityType Name="JobRecordsInOrganization">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberShipID" Type="Int32" />
+          <Property Name="BranchID" Type="Int32" />
+          <Property Name="BranchName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BranchOrganID" Type="Int32" />
+          <Property Name="BranchOrganName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FromDate" Type="DateTime" Precision="0" />
+          <Property Name="ToDate" Type="DateTime" Precision="0" />
+          <Property Name="FileContent" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ExtensionID" Type="Int32" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="FileExtension" Relationship="Self.FK_JobRecordsInOrganizations_FileExtensions" FromRole="JobRecordsInOrganizations" ToRole="FileExtensions" />
+          <NavigationProperty Name="MemberShip" Relationship="RoshdModel.FK_JobRecordsInOrganizations_MemberShip" FromRole="JobRecordsInOrganization" ToRole="MemberShip" />
+        </EntityType>
+        <EntityType Name="JobRecordsOutOfOrganization">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberShipID" Type="Int32" />
+          <Property Name="CountyID" Type="Int32" />
+          <Property Name="OrganizationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UnitName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FromDate" Type="DateTime" Precision="0" />
+          <Property Name="ToDate" Type="DateTime" Precision="0" />
+          <Property Name="FileContent" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ExtensionID" Type="Int32" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="County" Relationship="Self.FK_JobRecordsOutOfOrganizations_Counties" FromRole="JobRecordsOutOfOrganizations" ToRole="Counties" />
+          <NavigationProperty Name="FileExtension" Relationship="Self.FK_JobRecordsOutOfOrganizations_FileExtensions" FromRole="JobRecordsOutOfOrganizations" ToRole="FileExtensions" />
+          <NavigationProperty Name="MemberShip" Relationship="RoshdModel.FK_JobRecordsOutOfOrganizations_MemberShip" FromRole="JobRecordsOutOfOrganization" ToRole="MemberShip" />
+        </EntityType>
+        <EntityType Name="MemberEducation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberShipID" Type="Int32" />
+          <Property Name="EducationalFieldID" Type="Int32" />
+          <Property Name="EducationalCrossSectionID" Type="Int32" />
+          <Property Name="CanDelete" Type="Boolean" />
+          <Property Name="UniversityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountyID" Type="Int32" />
+          <Property Name="FinalScore" Type="Double" />
+          <Property Name="FileContent" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ExtensionID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="MemberID" Type="Int32" />
+          <NavigationProperty Name="County" Relationship="Self.FK_MemberEducations_Counties" FromRole="MemberEducations" ToRole="Counties" />
+          <NavigationProperty Name="EducationalCrossSection" Relationship="Self.FK_MemberEducations_EducationalCrossSections" FromRole="MemberEducations" ToRole="EducationalCrossSections" />
+          <NavigationProperty Name="EducationalField" Relationship="Self.FK_MemberEducations_EducationalFields" FromRole="MemberEducations" ToRole="EducationalFields" />
+          <NavigationProperty Name="FileExtension" Relationship="Self.FK_MemberEducations_FileExtensions" FromRole="MemberEducations" ToRole="FileExtensions" />
+          <NavigationProperty Name="MemberShip" Relationship="RoshdModel.FK_MemberEducations_MemberShip" FromRole="MemberEducation" ToRole="MemberShip" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="MemberShips" Relationship="RoshdModel.FK_MemberShip_Organizations" FromRole="Organization" ToRole="MemberShip" />
+        </EntityType>
+        <EntityType Name="PresentedArticle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberShipID" Type="Int32" />
+          <Property Name="ConferenceTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ArticlesTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PresentedDate" Type="DateTime" Precision="0" />
+          <Property Name="FileContent" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ExtensionID" Type="Int32" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="FileExtension" Relationship="Self.FK_PresentedArticles_FileExtensions" FromRole="PresentedArticles" ToRole="FileExtensions" />
+          <NavigationProperty Name="MemberShip" Relationship="RoshdModel.FK_PresentedArticles_MemberShip" FromRole="PresentedArticle" ToRole="MemberShip" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LatinTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ProvinceGroupID" Type="Int32" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Counties" Relationship="Self.FK_Counties_Provinces" FromRole="Provinces" ToRole="Counties" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Provinces_Countries" FromRole="Provinces" ToRole="Countries" />
+        </EntityType>
+        <EntityType Name="PublishedArticle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberShipID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MagazineName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MagazineNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MagazineDate" Type="DateTime" Precision="0" />
+          <Property Name="FileContent" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ExtensionID" Type="Int32" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="FileExtension" Relationship="Self.FK_PublishedArticles_FileExtensions" FromRole="PublishedArticles" ToRole="FileExtensions" />
+          <NavigationProperty Name="MemberShip" Relationship="RoshdModel.FK_PublishedArticles_MemberShip" FromRole="PublishedArticle" ToRole="MemberShip" />
+        </EntityType>
+        <EntityType Name="SpecializedExperience">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberShipID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="FileContent" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ExtensionID" Type="Int32" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="FileExtension" Relationship="Self.FK_SpecializedExperiences_FileExtensions" FromRole="SpecializedExperiences" ToRole="FileExtensions" />
+          <NavigationProperty Name="MemberShip" Relationship="RoshdModel.FK_SpecializedExperiences_MemberShip" FromRole="SpecializedExperience" ToRole="MemberShip" />
+        </EntityType>
+        <EntityType Name="Thesis">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberShipID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EducationalCrossSectionID" Type="Int32" />
+          <Property Name="UniversityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Supervisor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Score" Type="Double" />
+          <Property Name="FileContent" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ExtensionID" Type="Int32" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="EducationalCrossSection" Relationship="Self.FK_Thesis_EducationalCrossSections" FromRole="Thesis" ToRole="EducationalCrossSections" />
+          <NavigationProperty Name="FileExtension" Relationship="Self.FK_Thesis_FileExtensions" FromRole="Thesis" ToRole="FileExtensions" />
+          <NavigationProperty Name="MemberShip" Relationship="RoshdModel.FK_Thesis_MemberShip" FromRole="Thesis" ToRole="MemberShip" />
+        </EntityType>
+        <EntityType Name="ApplicationMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MenuURL" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="MenuOrder" Type="Byte" />
+          <NavigationProperty Name="ApplicationPages" Relationship="Self.FK_ApplicationPages_ApplicationMenus" FromRole="ApplicationMenus" ToRole="ApplicationPages" />
+        </EntityType>
+        <EntityType Name="ApplicationPage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PID" Type="Int32" />
+          <Property Name="PageName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MenuID" Type="Int32" />
+          <Property Name="PageAddres" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SubMenuOrder" Type="Byte" />
+          <Property Name="Color" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ApplicationMenu" Relationship="Self.FK_ApplicationPages_ApplicationMenus" FromRole="ApplicationPages" ToRole="ApplicationMenus" />
+          <NavigationProperty Name="PagePatrs" Relationship="Self.FK_PagePatrs_ApplicationPages" FromRole="ApplicationPages" ToRole="PagePatrs" />
+        </EntityType>
+        <EntityType Name="Authorization">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="AccessTo" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="RoshdModel.FK_Authorizations_Roles" FromRole="Authorization" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="LookupControlForDelete">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="PrimaryTable" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ForeignTable" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ForeignField" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PagePartElement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PagePatrID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ClassName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FullMethod" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="OperationButtonID" Type="Int32" />
+          <NavigationProperty Name="PagePatr" Relationship="Self.FK_PagePartElements_PagePatrs" FromRole="PagePartElements" ToRole="PagePatrs" />
+        </EntityType>
+        <EntityType Name="PagePatr">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicationPageID" Type="Int32" />
+          <Property Name="PartDivID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PartName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ApplicationPage" Relationship="Self.FK_PagePatrs_ApplicationPages" FromRole="PagePatrs" ToRole="ApplicationPages" />
+          <NavigationProperty Name="PagePartElements" Relationship="Self.FK_PagePartElements_PagePatrs" FromRole="PagePatrs" ToRole="PagePartElements" />
+        </EntityType>
+        <Association Name="FK_Cities_Districts">
+          <End Role="Districts" Type="Self.District" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cities" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="DistrictID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Counties_Provinces">
+          <End Role="Provinces" Type="Self.Province" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Counties" Type="Self.County" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Counties">
+              <PropertyRef Name="ProvinceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Districts_Counties">
+          <End Role="Counties" Type="Self.County" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Districts" Type="Self.District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Counties">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Districts">
+              <PropertyRef Name="CountyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobRecordsOutOfOrganizations_Counties">
+          <End Role="Counties" Type="Self.County" Multiplicity="0..1" />
+          <End Role="JobRecordsOutOfOrganizations" Type="Self.JobRecordsOutOfOrganization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Counties">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobRecordsOutOfOrganizations">
+              <PropertyRef Name="CountyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberEducations_Counties">
+          <End Role="Counties" Type="Self.County" Multiplicity="0..1" />
+          <End Role="MemberEducations" Type="Self.MemberEducation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Counties">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberEducations">
+              <PropertyRef Name="CountyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Provinces_Countries">
+          <End Role="Countries" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Provinces" Type="Self.Province" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Provinces">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EducationalFields_DepartmentOfEducations">
+          <End Role="DepartmentOfEducations" Type="Self.DepartmentOfEducation" Multiplicity="0..1" />
+          <End Role="EducationalFields" Type="Self.EducationalField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentOfEducations">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EducationalFields">
+              <PropertyRef Name="DepartmentOfEducationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberEducations_EducationalCrossSections">
+          <End Role="EducationalCrossSections" Type="Self.EducationalCrossSection" Multiplicity="0..1" />
+          <End Role="MemberEducations" Type="Self.MemberEducation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EducationalCrossSections">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberEducations">
+              <PropertyRef Name="EducationalCrossSectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Thesis_EducationalCrossSections">
+          <End Role="EducationalCrossSections" Type="Self.EducationalCrossSection" Multiplicity="0..1" />
+          <End Role="Thesis" Type="Self.Thesis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EducationalCrossSections">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Thesis">
+              <PropertyRef Name="EducationalCrossSectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberEducations_EducationalFields">
+          <End Role="EducationalFields" Type="Self.EducationalField" Multiplicity="0..1" />
+          <End Role="MemberEducations" Type="Self.MemberEducation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EducationalFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberEducations">
+              <PropertyRef Name="EducationalFieldID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Honors_FileExtensions">
+          <End Role="FileExtensions" Type="Self.FileExtension" Multiplicity="0..1" />
+          <End Role="Honors" Type="Self.Honor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileExtensions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Honors">
+              <PropertyRef Name="ExtensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobRecordsInOrganizations_FileExtensions">
+          <End Role="FileExtensions" Type="Self.FileExtension" Multiplicity="0..1" />
+          <End Role="JobRecordsInOrganizations" Type="Self.JobRecordsInOrganization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileExtensions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobRecordsInOrganizations">
+              <PropertyRef Name="ExtensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobRecordsOutOfOrganizations_FileExtensions">
+          <End Role="FileExtensions" Type="Self.FileExtension" Multiplicity="0..1" />
+          <End Role="JobRecordsOutOfOrganizations" Type="Self.JobRecordsOutOfOrganization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileExtensions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobRecordsOutOfOrganizations">
+              <PropertyRef Name="ExtensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberEducations_FileExtensions">
+          <End Role="FileExtensions" Type="Self.FileExtension" Multiplicity="0..1" />
+          <End Role="MemberEducations" Type="Self.MemberEducation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileExtensions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberEducations">
+              <PropertyRef Name="ExtensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PresentedArticles_FileExtensions">
+          <End Role="FileExtensions" Type="Self.FileExtension" Multiplicity="0..1" />
+          <End Role="PresentedArticles" Type="Self.PresentedArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileExtensions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PresentedArticles">
+              <PropertyRef Name="ExtensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PublishedArticles_FileExtensions">
+          <End Role="FileExtensions" Type="Self.FileExtension" Multiplicity="0..1" />
+          <End Role="PublishedArticles" Type="Self.PublishedArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileExtensions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PublishedArticles">
+              <PropertyRef Name="ExtensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecializedExperiences_FileExtensions">
+          <End Role="FileExtensions" Type="Self.FileExtension" Multiplicity="0..1" />
+          <End Role="SpecializedExperiences" Type="Self.SpecializedExperience" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileExtensions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SpecializedExperiences">
+              <PropertyRef Name="ExtensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Thesis_FileExtensions">
+          <End Role="FileExtensions" Type="Self.FileExtension" Multiplicity="0..1" />
+          <End Role="Thesis" Type="Self.Thesis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileExtensions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Thesis">
+              <PropertyRef Name="ExtensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationPages_ApplicationMenus">
+          <End Role="ApplicationMenus" Type="Self.ApplicationMenu" Multiplicity="0..1" />
+          <End Role="ApplicationPages" Type="Self.ApplicationPage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationMenus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ApplicationPages">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PagePatrs_ApplicationPages">
+          <End Role="ApplicationPages" Type="Self.ApplicationPage" Multiplicity="0..1" />
+          <End Role="PagePatrs" Type="Self.PagePatr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationPages">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PagePatrs">
+              <PropertyRef Name="ApplicationPageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PagePartElements_PagePatrs">
+          <End Role="PagePatrs" Type="Self.PagePatr" Multiplicity="0..1" />
+          <End Role="PagePartElements" Type="Self.PagePartElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PagePatrs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PagePartElements">
+              <PropertyRef Name="PagePatrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RoshdEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="Counties" EntityType="Self.County" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="DepartmentOfEducations" EntityType="Self.DepartmentOfEducation" />
+          <EntitySet Name="Districts" EntityType="Self.District" />
+          <EntitySet Name="EducationalCrossSections" EntityType="Self.EducationalCrossSection" />
+          <EntitySet Name="EducationalFields" EntityType="Self.EducationalField" />
+          <EntitySet Name="FileExtensions" EntityType="Self.FileExtension" />
+          <EntitySet Name="Honors" EntityType="Self.Honor" />
+          <EntitySet Name="JobRecordsInOrganizations" EntityType="Self.JobRecordsInOrganization" />
+          <EntitySet Name="JobRecordsOutOfOrganizations" EntityType="Self.JobRecordsOutOfOrganization" />
+          <EntitySet Name="MemberEducations" EntityType="Self.MemberEducation" />
+          <EntitySet Name="Organizations" EntityType="Self.Organization" />
+          <EntitySet Name="PresentedArticles" EntityType="Self.PresentedArticle" />
+          <EntitySet Name="Provinces" EntityType="Self.Province" />
+          <EntitySet Name="PublishedArticles" EntityType="Self.PublishedArticle" />
+          <EntitySet Name="SpecializedExperiences" EntityType="Self.SpecializedExperience" />
+          <EntitySet Name="Theses" EntityType="Self.Thesis" />
+          <EntitySet Name="ApplicationMenus" EntityType="Self.ApplicationMenu" />
+          <EntitySet Name="ApplicationPages" EntityType="Self.ApplicationPage" />
+          <EntitySet Name="Authorizations" EntityType="Self.Authorization" />
+          <EntitySet Name="LookupControlForDeletes" EntityType="Self.LookupControlForDelete" />
+          <EntitySet Name="PagePartElements" EntityType="Self.PagePartElement" />
+          <EntitySet Name="PagePatrs" EntityType="Self.PagePatr" />
+          <AssociationSet Name="FK_Cities_Districts" Association="Self.FK_Cities_Districts">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Counties_Provinces" Association="Self.FK_Counties_Provinces">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="Counties" EntitySet="Counties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Districts_Counties" Association="Self.FK_Districts_Counties">
+            <End Role="Counties" EntitySet="Counties" />
+            <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobRecordsOutOfOrganizations_Counties" Association="Self.FK_JobRecordsOutOfOrganizations_Counties">
+            <End Role="Counties" EntitySet="Counties" />
+            <End Role="JobRecordsOutOfOrganizations" EntitySet="JobRecordsOutOfOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberEducations_Counties" Association="Self.FK_MemberEducations_Counties">
+            <End Role="Counties" EntitySet="Counties" />
+            <End Role="MemberEducations" EntitySet="MemberEducations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Provinces_Countries" Association="Self.FK_Provinces_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Provinces" EntitySet="Provinces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EducationalFields_DepartmentOfEducations" Association="Self.FK_EducationalFields_DepartmentOfEducations">
+            <End Role="DepartmentOfEducations" EntitySet="DepartmentOfEducations" />
+            <End Role="EducationalFields" EntitySet="EducationalFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberEducations_EducationalCrossSections" Association="Self.FK_MemberEducations_EducationalCrossSections">
+            <End Role="EducationalCrossSections" EntitySet="EducationalCrossSections" />
+            <End Role="MemberEducations" EntitySet="MemberEducations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Thesis_EducationalCrossSections" Association="Self.FK_Thesis_EducationalCrossSections">
+            <End Role="EducationalCrossSections" EntitySet="EducationalCrossSections" />
+            <End Role="Thesis" EntitySet="Theses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberEducations_EducationalFields" Association="Self.FK_MemberEducations_EducationalFields">
+            <End Role="EducationalFields" EntitySet="EducationalFields" />
+            <End Role="MemberEducations" EntitySet="MemberEducations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Honors_FileExtensions" Association="Self.FK_Honors_FileExtensions">
+            <End Role="FileExtensions" EntitySet="FileExtensions" />
+            <End Role="Honors" EntitySet="Honors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobRecordsInOrganizations_FileExtensions" Association="Self.FK_JobRecordsInOrganizations_FileExtensions">
+            <End Role="FileExtensions" EntitySet="FileExtensions" />
+            <End Role="JobRecordsInOrganizations" EntitySet="JobRecordsInOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobRecordsOutOfOrganizations_FileExtensions" Association="Self.FK_JobRecordsOutOfOrganizations_FileExtensions">
+            <End Role="FileExtensions" EntitySet="FileExtensions" />
+            <End Role="JobRecordsOutOfOrganizations" EntitySet="JobRecordsOutOfOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberEducations_FileExtensions" Association="Self.FK_MemberEducations_FileExtensions">
+            <End Role="FileExtensions" EntitySet="FileExtensions" />
+            <End Role="MemberEducations" EntitySet="MemberEducations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PresentedArticles_FileExtensions" Association="Self.FK_PresentedArticles_FileExtensions">
+            <End Role="FileExtensions" EntitySet="FileExtensions" />
+            <End Role="PresentedArticles" EntitySet="PresentedArticles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PublishedArticles_FileExtensions" Association="Self.FK_PublishedArticles_FileExtensions">
+            <End Role="FileExtensions" EntitySet="FileExtensions" />
+            <End Role="PublishedArticles" EntitySet="PublishedArticles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecializedExperiences_FileExtensions" Association="Self.FK_SpecializedExperiences_FileExtensions">
+            <End Role="FileExtensions" EntitySet="FileExtensions" />
+            <End Role="SpecializedExperiences" EntitySet="SpecializedExperiences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Thesis_FileExtensions" Association="Self.FK_Thesis_FileExtensions">
+            <End Role="FileExtensions" EntitySet="FileExtensions" />
+            <End Role="Thesis" EntitySet="Theses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationPages_ApplicationMenus" Association="Self.FK_ApplicationPages_ApplicationMenus">
+            <End Role="ApplicationMenus" EntitySet="ApplicationMenus" />
+            <End Role="ApplicationPages" EntitySet="ApplicationPages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PagePatrs_ApplicationPages" Association="Self.FK_PagePatrs_ApplicationPages">
+            <End Role="ApplicationPages" EntitySet="ApplicationPages" />
+            <End Role="PagePatrs" EntitySet="PagePatrs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PagePartElements_PagePatrs" Association="Self.FK_PagePartElements_PagePatrs">
+            <End Role="PagePatrs" EntitySet="PagePatrs" />
+            <End Role="PagePartElements" EntitySet="PagePartElements" />
+          </AssociationSet>
+          <FunctionImport Name="Key" ReturnType="Collection(String)" />
+          <EntitySet Name="RoleLevels" EntityType="RoshdModel.RoleLevel" />
+          <EntitySet Name="Roles" EntityType="RoshdModel.Role" />
+          <AssociationSet Name="FK_Authorizations_Roles" Association="RoshdModel.FK_Authorizations_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Authorization" EntitySet="Authorizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Roles_RoleLevels" Association="RoshdModel.FK_Roles_RoleLevels">
+            <End Role="RoleLevel" EntitySet="RoleLevels" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <FunctionImport Name="spLookupsControlForDelete" ReturnType="Collection(Int32)">
+            <Parameter Name="PTable" Mode="In" Type="String" />
+            <Parameter Name="PField" Mode="In" Type="String" />
+            <Parameter Name="PCode" Mode="In" Type="String" />
+            <Parameter Name="MemberID" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="MemberResponsibilities" EntityType="RoshdModel.MemberResponsibility" />
+          <AssociationSet Name="FK_MemberResponsibilities_Roles" Association="RoshdModel.FK_MemberResponsibilities_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="MemberResponsibility" EntitySet="MemberResponsibilities" />
+          </AssociationSet>
+          <EntitySet Name="MemberShips" EntityType="RoshdModel.MemberShip" />
+          <AssociationSet Name="FK_Honors_MemberShip" Association="RoshdModel.FK_Honors_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShips" />
+            <End Role="Honor" EntitySet="Honors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobRecordsInOrganizations_MemberShip" Association="RoshdModel.FK_JobRecordsInOrganizations_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShips" />
+            <End Role="JobRecordsInOrganization" EntitySet="JobRecordsInOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobRecordsOutOfOrganizations_MemberShip" Association="RoshdModel.FK_JobRecordsOutOfOrganizations_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShips" />
+            <End Role="JobRecordsOutOfOrganization" EntitySet="JobRecordsOutOfOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberEducations_MemberShip" Association="RoshdModel.FK_MemberEducations_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShips" />
+            <End Role="MemberEducation" EntitySet="MemberEducations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberResponsibilities_MemberShip" Association="RoshdModel.FK_MemberResponsibilities_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShips" />
+            <End Role="MemberResponsibility" EntitySet="MemberResponsibilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberShip_Organizations" Association="RoshdModel.FK_MemberShip_Organizations">
+            <End Role="Organization" EntitySet="Organizations" />
+            <End Role="MemberShip" EntitySet="MemberShips" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberShip_Roles" Association="RoshdModel.FK_MemberShip_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="MemberShip" EntitySet="MemberShips" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PresentedArticles_MemberShip" Association="RoshdModel.FK_PresentedArticles_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShips" />
+            <End Role="PresentedArticle" EntitySet="PresentedArticles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PublishedArticles_MemberShip" Association="RoshdModel.FK_PublishedArticles_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShips" />
+            <End Role="PublishedArticle" EntitySet="PublishedArticles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecializedExperiences_MemberShip" Association="RoshdModel.FK_SpecializedExperiences_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShips" />
+            <End Role="SpecializedExperience" EntitySet="SpecializedExperiences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Thesis_MemberShip" Association="RoshdModel.FK_Thesis_MemberShip">
+            <End Role="MemberShip" EntitySet="MemberShips" />
+            <End Role="Thesis" EntitySet="Theses" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="RoleLevel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LevelOrder" Type="Byte" />
+          <NavigationProperty Name="Roles" Relationship="RoshdModel.FK_Roles_RoleLevels" FromRole="RoleLevel" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="RoleLevelID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="MemberID" Type="Int32" />
+          <NavigationProperty Name="Authorizations" Relationship="RoshdModel.FK_Authorizations_Roles" FromRole="Role" ToRole="Authorization" />
+          <NavigationProperty Name="RoleLevel" Relationship="RoshdModel.FK_Roles_RoleLevels" FromRole="Role" ToRole="RoleLevel" />
+          <NavigationProperty Name="MemberResponsibilities" Relationship="RoshdModel.FK_MemberResponsibilities_Roles" FromRole="Role" ToRole="MemberResponsibility" />
+          <NavigationProperty Name="MemberShips" Relationship="RoshdModel.FK_MemberShip_Roles" FromRole="Role" ToRole="MemberShip" />
+        </EntityType>
+        <Association Name="FK_Authorizations_Roles">
+          <End Type="RoshdModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="RoshdModel.Authorization" Role="Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Authorization">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Roles_RoleLevels">
+          <End Type="RoshdModel.RoleLevel" Role="RoleLevel" Multiplicity="0..1" />
+          <End Type="RoshdModel.Role" Role="Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleLevel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="RoleLevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MemberResponsibility">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberShipID" Type="Int32" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Role" Relationship="RoshdModel.FK_MemberResponsibilities_Roles" FromRole="MemberResponsibility" ToRole="Role" />
+          <NavigationProperty Name="MemberShip" Relationship="RoshdModel.FK_MemberResponsibilities_MemberShip" FromRole="MemberResponsibility" ToRole="MemberShip" />
+        </EntityType>
+        <Association Name="FK_MemberResponsibilities_Roles">
+          <End Type="RoshdModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="RoshdModel.MemberResponsibility" Role="MemberResponsibility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberResponsibility">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MemberShip">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="Int32" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="BirthOfDate" Type="DateTime" Precision="0" />
+          <Property Name="NationalCode" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="PersonnelCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmationCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
+          <Property Name="SubmitDate" Type="DateTime" Precision="0" />
+          <Property Name="FailedPasswordCount" Type="Int32" />
+          <Property Name="AdminLockDate" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="ProfilePic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Honors" Relationship="RoshdModel.FK_Honors_MemberShip" FromRole="MemberShip" ToRole="Honor" />
+          <NavigationProperty Name="JobRecordsInOrganizations" Relationship="RoshdModel.FK_JobRecordsInOrganizations_MemberShip" FromRole="MemberShip" ToRole="JobRecordsInOrganization" />
+          <NavigationProperty Name="JobRecordsOutOfOrganizations" Relationship="RoshdModel.FK_JobRecordsOutOfOrganizations_MemberShip" FromRole="MemberShip" ToRole="JobRecordsOutOfOrganization" />
+          <NavigationProperty Name="MemberEducations" Relationship="RoshdModel.FK_MemberEducations_MemberShip" FromRole="MemberShip" ToRole="MemberEducation" />
+          <NavigationProperty Name="MemberResponsibilities" Relationship="RoshdModel.FK_MemberResponsibilities_MemberShip" FromRole="MemberShip" ToRole="MemberResponsibility" />
+          <NavigationProperty Name="Organization" Relationship="RoshdModel.FK_MemberShip_Organizations" FromRole="MemberShip" ToRole="Organization" />
+          <NavigationProperty Name="Role" Relationship="RoshdModel.FK_MemberShip_Roles" FromRole="MemberShip" ToRole="Role" />
+          <NavigationProperty Name="PresentedArticles" Relationship="RoshdModel.FK_PresentedArticles_MemberShip" FromRole="MemberShip" ToRole="PresentedArticle" />
+          <NavigationProperty Name="PublishedArticles" Relationship="RoshdModel.FK_PublishedArticles_MemberShip" FromRole="MemberShip" ToRole="PublishedArticle" />
+          <NavigationProperty Name="SpecializedExperiences" Relationship="RoshdModel.FK_SpecializedExperiences_MemberShip" FromRole="MemberShip" ToRole="SpecializedExperience" />
+          <NavigationProperty Name="Theses" Relationship="RoshdModel.FK_Thesis_MemberShip" FromRole="MemberShip" ToRole="Thesis" />
+        </EntityType>
+        <Association Name="FK_Honors_MemberShip">
+          <End Type="RoshdModel.MemberShip" Role="MemberShip" Multiplicity="0..1" />
+          <End Type="RoshdModel.Honor" Role="Honor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Honor">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobRecordsInOrganizations_MemberShip">
+          <End Type="RoshdModel.MemberShip" Role="MemberShip" Multiplicity="0..1" />
+          <End Type="RoshdModel.JobRecordsInOrganization" Role="JobRecordsInOrganization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobRecordsInOrganization">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobRecordsOutOfOrganizations_MemberShip">
+          <End Type="RoshdModel.MemberShip" Role="MemberShip" Multiplicity="0..1" />
+          <End Type="RoshdModel.JobRecordsOutOfOrganization" Role="JobRecordsOutOfOrganization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobRecordsOutOfOrganization">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberEducations_MemberShip">
+          <End Type="RoshdModel.MemberShip" Role="MemberShip" Multiplicity="0..1" />
+          <End Type="RoshdModel.MemberEducation" Role="MemberEducation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberEducation">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberResponsibilities_MemberShip">
+          <End Type="RoshdModel.MemberShip" Role="MemberShip" Multiplicity="0..1" />
+          <End Type="RoshdModel.MemberResponsibility" Role="MemberResponsibility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberResponsibility">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberShip_Organizations">
+          <End Type="RoshdModel.Organization" Role="Organization" Multiplicity="0..1" />
+          <End Type="RoshdModel.MemberShip" Role="MemberShip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberShip">
+              <PropertyRef Name="OrganizationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberShip_Roles">
+          <End Type="RoshdModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="RoshdModel.MemberShip" Role="MemberShip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberShip">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PresentedArticles_MemberShip">
+          <End Type="RoshdModel.MemberShip" Role="MemberShip" Multiplicity="0..1" />
+          <End Type="RoshdModel.PresentedArticle" Role="PresentedArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PresentedArticle">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PublishedArticles_MemberShip">
+          <End Type="RoshdModel.MemberShip" Role="MemberShip" Multiplicity="0..1" />
+          <End Type="RoshdModel.PublishedArticle" Role="PublishedArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PublishedArticle">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecializedExperiences_MemberShip">
+          <End Type="RoshdModel.MemberShip" Role="MemberShip" Multiplicity="0..1" />
+          <End Type="RoshdModel.SpecializedExperience" Role="SpecializedExperience" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SpecializedExperience">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Thesis_MemberShip">
+          <End Type="RoshdModel.MemberShip" Role="MemberShip" Multiplicity="0..1" />
+          <End Type="RoshdModel.Thesis" Role="Thesis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberShip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Thesis">
+              <PropertyRef Name="MemberShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RoshdModelStoreContainer" CdmEntityContainer="RoshdEntities">
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="RoshdModel.City">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LatinTitle" ColumnName="LatinTitle" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Counties">
+            <EntityTypeMapping TypeName="RoshdModel.County">
+              <MappingFragment StoreEntitySet="Counties">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LatinTitle" ColumnName="LatinTitle" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="RoshdModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DepartmentOfEducations">
+            <EntityTypeMapping TypeName="RoshdModel.DepartmentOfEducation">
+              <MappingFragment StoreEntitySet="DepartmentOfEducations">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="RoshdModel.District">
+              <MappingFragment StoreEntitySet="Districts">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CountyID" ColumnName="CountyID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LatinTitle" ColumnName="LatinTitle" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EducationalCrossSections">
+            <EntityTypeMapping TypeName="RoshdModel.EducationalCrossSection">
+              <MappingFragment StoreEntitySet="EducationalCrossSections">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EducationalFields">
+            <EntityTypeMapping TypeName="RoshdModel.EducationalField">
+              <MappingFragment StoreEntitySet="EducationalFields">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DepartmentOfEducationID" ColumnName="DepartmentOfEducationID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="RelatedField" ColumnName="RelatedField" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileExtensions">
+            <EntityTypeMapping TypeName="RoshdModel.FileExtension">
+              <MappingFragment StoreEntitySet="FileExtensions">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IsDownload" ColumnName="IsDownload" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Honors">
+            <EntityTypeMapping TypeName="RoshdModel.Honor">
+              <MappingFragment StoreEntitySet="Honors">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberShipID" ColumnName="MemberShipID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+                <ScalarProperty Name="ExtensionID" ColumnName="ExtensionID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobRecordsInOrganizations">
+            <EntityTypeMapping TypeName="RoshdModel.JobRecordsInOrganization">
+              <MappingFragment StoreEntitySet="JobRecordsInOrganizations">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberShipID" ColumnName="MemberShipID" />
+                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="BranchOrganID" ColumnName="BranchOrganID" />
+                <ScalarProperty Name="BranchOrganName" ColumnName="BranchOrganName" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+                <ScalarProperty Name="ExtensionID" ColumnName="ExtensionID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobRecordsOutOfOrganizations">
+            <EntityTypeMapping TypeName="RoshdModel.JobRecordsOutOfOrganization">
+              <MappingFragment StoreEntitySet="JobRecordsOutOfOrganizations">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberShipID" ColumnName="MemberShipID" />
+                <ScalarProperty Name="CountyID" ColumnName="CountyID" />
+                <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+                <ScalarProperty Name="ExtensionID" ColumnName="ExtensionID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MemberEducations">
+            <EntityTypeMapping TypeName="RoshdModel.MemberEducation">
+              <MappingFragment StoreEntitySet="MemberEducations">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberShipID" ColumnName="MemberShipID" />
+                <ScalarProperty Name="EducationalFieldID" ColumnName="EducationalFieldID" />
+                <ScalarProperty Name="EducationalCrossSectionID" ColumnName="EducationalCrossSectionID" />
+                <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
+                <ScalarProperty Name="UniversityName" ColumnName="UniversityName" />
+                <ScalarProperty Name="CountyID" ColumnName="CountyID" />
+                <ScalarProperty Name="FinalScore" ColumnName="FinalScore" />
+                <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+                <ScalarProperty Name="ExtensionID" ColumnName="ExtensionID" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organizations">
+            <EntityTypeMapping TypeName="RoshdModel.Organization">
+              <MappingFragment StoreEntitySet="Organizations">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PresentedArticles">
+            <EntityTypeMapping TypeName="RoshdModel.PresentedArticle">
+              <MappingFragment StoreEntitySet="PresentedArticles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberShipID" ColumnName="MemberShipID" />
+                <ScalarProperty Name="ConferenceTitle" ColumnName="ConferenceTitle" />
+                <ScalarProperty Name="ArticlesTitle" ColumnName="ArticlesTitle" />
+                <ScalarProperty Name="PresentedDate" ColumnName="PresentedDate" />
+                <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+                <ScalarProperty Name="ExtensionID" ColumnName="ExtensionID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="RoshdModel.Province">
+              <MappingFragment StoreEntitySet="Provinces">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LatinTitle" ColumnName="LatinTitle" />
+                <ScalarProperty Name="ProvinceGroupID" ColumnName="ProvinceGroupID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PublishedArticles">
+            <EntityTypeMapping TypeName="RoshdModel.PublishedArticle">
+              <MappingFragment StoreEntitySet="PublishedArticles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberShipID" ColumnName="MemberShipID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MagazineName" ColumnName="MagazineName" />
+                <ScalarProperty Name="MagazineNumber" ColumnName="MagazineNumber" />
+                <ScalarProperty Name="MagazineDate" ColumnName="MagazineDate" />
+                <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+                <ScalarProperty Name="ExtensionID" ColumnName="ExtensionID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpecializedExperiences">
+            <EntityTypeMapping TypeName="RoshdModel.SpecializedExperience">
+              <MappingFragment StoreEntitySet="SpecializedExperiences">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberShipID" ColumnName="MemberShipID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+                <ScalarProperty Name="ExtensionID" ColumnName="ExtensionID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Theses">
+            <EntityTypeMapping TypeName="RoshdModel.Thesis">
+              <MappingFragment StoreEntitySet="Thesis">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberShipID" ColumnName="MemberShipID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="EducationalCrossSectionID" ColumnName="EducationalCrossSectionID" />
+                <ScalarProperty Name="UniversityName" ColumnName="UniversityName" />
+                <ScalarProperty Name="Supervisor" ColumnName="Supervisor" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+                <ScalarProperty Name="ExtensionID" ColumnName="ExtensionID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationMenus">
+            <EntityTypeMapping TypeName="RoshdModel.ApplicationMenu">
+              <MappingFragment StoreEntitySet="ApplicationMenus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="MenuURL" ColumnName="MenuURL" />
+                <ScalarProperty Name="MenuOrder" ColumnName="MenuOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationPages">
+            <EntityTypeMapping TypeName="RoshdModel.ApplicationPage">
+              <MappingFragment StoreEntitySet="ApplicationPages">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="PageAddres" ColumnName="PageAddres" />
+                <ScalarProperty Name="SubMenuOrder" ColumnName="SubMenuOrder" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Authorizations">
+            <EntityTypeMapping TypeName="RoshdModel.Authorization">
+              <MappingFragment StoreEntitySet="Authorizations">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="AccessTo" ColumnName="AccessTo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LookupControlForDeletes">
+            <EntityTypeMapping TypeName="RoshdModel.LookupControlForDelete">
+              <MappingFragment StoreEntitySet="LookupControlForDelete">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PrimaryTable" ColumnName="PrimaryTable" />
+                <ScalarProperty Name="ForeignTable" ColumnName="ForeignTable" />
+                <ScalarProperty Name="ForeignField" ColumnName="ForeignField" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PagePartElements">
+            <EntityTypeMapping TypeName="RoshdModel.PagePartElement">
+              <MappingFragment StoreEntitySet="PagePartElements">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PagePatrID" ColumnName="PagePatrID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="FullMethod" ColumnName="FullMethod" />
+                <ScalarProperty Name="OperationButtonID" ColumnName="OperationButtonID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PagePatrs">
+            <EntityTypeMapping TypeName="RoshdModel.PagePatr">
+              <MappingFragment StoreEntitySet="PagePatrs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ApplicationPageID" ColumnName="ApplicationPageID" />
+                <ScalarProperty Name="PartDivID" ColumnName="PartDivID" />
+                <ScalarProperty Name="PartName" ColumnName="PartName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Key" FunctionName="RoshdModel.Store.Key" />
+          <EntitySetMapping Name="RoleLevels">
+            <EntityTypeMapping TypeName="RoshdModel.RoleLevel">
+              <MappingFragment StoreEntitySet="RoleLevels">
+                <ScalarProperty Name="LevelOrder" ColumnName="LevelOrder" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="RoshdModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="RoleLevelID" ColumnName="RoleLevelID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spLookupsControlForDelete" FunctionName="RoshdModel.Store.spLookupsControlForDelete" />
+          <EntitySetMapping Name="MemberResponsibilities">
+            <EntityTypeMapping TypeName="RoshdModel.MemberResponsibility">
+              <MappingFragment StoreEntitySet="MemberResponsibilities">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="MemberShipID" ColumnName="MemberShipID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MemberShips">
+            <EntityTypeMapping TypeName="RoshdModel.MemberShip">
+              <MappingFragment StoreEntitySet="MemberShip">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AdminLockDate" ColumnName="AdminLockDate" />
+                <ScalarProperty Name="FailedPasswordCount" ColumnName="FailedPasswordCount" />
+                <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ConfirmationCode" ColumnName="ConfirmationCode" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PersonnelCode" ColumnName="PersonnelCode" />
+                <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+                <ScalarProperty Name="BirthOfDate" ColumnName="BirthOfDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

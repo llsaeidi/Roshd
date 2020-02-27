@@ -1,0 +1,1024 @@
+/*Grid*/
+.tbl
+{ /* or: .slides img */
+	width: 100% !important;
+    font-family: b nazanin;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.ui-jqgrid
+{
+	position: relative;
+	font-size: 11px;
+    font-family: b nazanin;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+	.ui-jqgrid .ui-jqgrid-view
+	{
+		/*position: relative;
+		left: 0px;
+		top: 0px;
+		padding: .0em;*/
+		text-align: right !important;
+		direction: rtl !important;
+
+		    font-family: b nazanin;
+    font-size: 15px;
+    font-weight: bold;
+	}
+	/* caption*/
+	.ui-jqgrid .ui-jqgrid-titlebar
+	{ /*padding: .3em .2em .2em .3em;*/
+		position: relative;
+		border-left: 0px none;
+		border-right: 0px none;
+		border-top: 0px none;
+		    font-family: b nazanin;
+    font-size: 15px;
+    font-weight: bold;
+	}
+
+	.ui-jqgrid .ui-jqgrid-title
+	{
+		float: right;
+		margin: .1em 3px .2em;
+		padding: .3em .2em .2em .3em;
+	    font-family: b nazanin;
+    font-size: 15px;
+    font-weight: bold;
+	}
+
+	.ui-jqgrid .ui-jqgrid-titlebar-close
+	{
+		float: right;
+		width: 19px;
+    font-family: b nazanin;
+    font-size: 15px;
+    font-weight: bold;
+	}
+
+		.ui-jqgrid .ui-jqgrid-titlebar-close span
+		{
+			display: block;
+			margin: 1px;
+    font-family: b nazanin;
+    font-size: 15px;
+    font-weight: bold;
+		}
+
+		.ui-jqgrid .ui-jqgrid-titlebar-close:hover
+		{
+			padding: 0;
+		    font-family: b nazanin;
+    font-size: 15px;
+    font-weight: bold;
+		}
+	/* header*/
+	.ui-jqgrid .ui-jqgrid-hdiv
+	{
+		text-align: right !important;
+		direction: rtl !important;
+
+		position: relative;
+		margin: 0em;
+		padding: 0em;
+		overflow-x: hidden;
+		overflow-y: auto;
+		border-left: 0px none !important;
+		border-top: 0px none !important;
+		border-right: 0px none !important;
+	    font-family: b nazanin;
+    font-size: 15px;
+    font-weight: bold;
+	}
+
+	.ui-jqgrid .ui-jqgrid-hbox
+	{
+		 /*padding-left: 20px;*/ 
+    font-family: b nazanin;
+    font-size: 15px;
+    font-weight: bold;
+	}
+
+	.ui-jqgrid .ui-jqgrid-htable
+	{
+		table-layout: fixed;
+		margin: 0em;
+        font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+		.ui-jqgrid .ui-jqgrid-htable th
+		{
+			height: 22px;
+			padding: 0 2px 0 2px;
+			font-family: b nazanin;font-size: 15px;font-weight: bold;
+		}
+
+			.ui-jqgrid .ui-jqgrid-htable th div
+			{
+				overflow: hidden;
+				position: relative;
+				height: 17px;
+				font-family: b nazanin;font-size: 15px;font-weight: bold;
+			}
+
+			.ui-th-column, .ui-jqgrid .ui-jqgrid-htable th.ui-th-column
+			{
+				/*overflow: hidden;*/
+				white-space: nowrap;
+				text-align: center;
+				border-top: 0px none;
+				border-bottom: 0px none;
+				font-family: b nazanin;font-size: 15px;font-weight: bold;
+                
+			}
+
+			.ui-th-ltr, .ui-jqgrid .ui-jqgrid-htable th.ui-th-ltr
+			{
+				border-left: 0px none;
+				font-family: b nazanin;font-size: 15px;font-weight: bold;
+                
+			}
+
+			.ui-th-rtl, .ui-jqgrid .ui-jqgrid-htable th.ui-th-rtl
+			{
+				border-right: 0px none;
+				font-family: b nazanin;font-size: 15px;font-weight: bold;
+
+			}
+
+	.ui-jqgrid .ui-th-div-ie
+	{
+		white-space: nowrap;
+		zoom: 1;
+		height: 17px;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+
+	}
+
+	.ui-jqgrid .ui-jqgrid-resize
+	{
+		height: 20px !important;
+		position: relative;
+		cursor: e-resize;
+		display: inline;
+		overflow: hidden;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+	.ui-jqgrid .ui-grid-ico-sort
+	{
+		overflow: hidden;
+		position: absolute;
+		display: inline;
+		cursor: pointer !important;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+	.ui-jqgrid .ui-icon-asc
+	{
+		margin-top: -3px;
+		height: 12px;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+	.ui-jqgrid .ui-icon-desc
+	{
+		margin-top: 3px;
+		height: 12px;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+	.ui-jqgrid .ui-i-asc
+	{
+		margin-top: 0px;
+		height: 16px;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+	.ui-jqgrid .ui-i-desc
+	{
+		margin-top: 0px;
+		margin-left: 13px;
+		height: 16px;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+	.ui-jqgrid .ui-jqgrid-sortable
+	{
+		cursor: pointer;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+	.ui-jqgrid tr.ui-search-toolbar th
+	{
+		border-top-width: 1px !important;
+		border-top-color: inherit !important;
+		border-top-style: ridge !important;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+tr.ui-search-toolbar input
+{
+	margin: 1px 0px 0px 0px;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+tr.ui-search-toolbar select
+{
+	margin: 1px 0px 0px 0px;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+/* body */
+.ui-jqgrid .ui-jqgrid-bdiv
+{
+	position: relative;
+	margin: 0em;
+	padding: 0;
+	overflow: auto;
+	text-align: right;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-jqgrid-btable
+{
+	table-layout: fixed;
+	margin: 0em;
+	outline-style: none;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid tr.jqgrow
+{
+	outline-style: none;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid tr.jqgroup
+{
+	outline-style: none;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid tr.jqgrow td
+{
+	font-weight: normal;
+	overflow: hidden;
+	white-space: pre;
+	height: 22px;
+	padding: 0 2px 0 2px;
+	/*
+	border-left-width: 1px;
+	border-right-width: 1px;
+	border-bottom-color: inherit;
+	border-bottom-style: solid;*/
+	/*border:1px ;*/
+	border-left: 1px solid;
+	border-bottom: 1px solid;
+	border-color:inherit;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid tr.jqgfirstrow td
+{
+	padding: 0 2px 0 2px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid tr.jqgroup td
+{
+	font-weight: normal;
+	overflow: hidden;
+	white-space: pre;
+	height: 22px;
+	padding: 0 2px 0 2px;
+	border-bottom-width: 1px;
+	border-bottom-color: inherit;
+	border-bottom-style: solid;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid tr.jqfoot td
+{
+	font-weight: bold;
+	overflow: hidden;
+	white-space: pre;
+	height: 22px;
+	padding: 0 2px 0 2px;
+	border-bottom-width: 1px;
+	border-bottom-color: inherit;
+	border-bottom-style: solid;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+    color:#c43ffa;
+}
+
+.ui-jqgrid tr.ui-row-ltr td
+{
+	text-align: right;
+	border-right-width: 1px;
+	border-right-color: inherit;
+	border-right-style: solid;
+    font-family: b nazanin;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.ui-jqgrid tr.ui-row-rtl td
+{
+	text-align: right;
+	border-left-width: 1px;
+	border-left-color: inherit;
+	border-left-style: solid;
+    font-family: b nazanin;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.ui-jqgrid td.jqgrid-rownum
+{
+	padding: 0 2px 0 2px;
+	margin: 0px;
+	border: 0px none;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-jqgrid-resize-mark
+{
+	width: 2px;
+	left: 0;
+	background-color: #777;
+	cursor: e-resize;
+	cursor: col-resize;
+	position: absolute;
+	top: 0;
+	height: 100px;
+	overflow: hidden;
+	display: none;
+	border: 0 none;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+/* footer */
+.ui-jqgrid .ui-jqgrid-sdiv
+{
+	position: relative;
+	margin: 0em;
+	padding: 0em;
+	overflow: hidden;
+	border-left: 0px none !important;
+	border-top: 0px none !important;
+	border-right: 0px none !important;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-jqgrid-ftable
+{
+	table-layout: fixed;
+	margin-bottom: 0em;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid tr.footrow td
+{
+	font-weight: bold;
+	overflow: hidden;
+	white-space: nowrap;
+	height: 21px;
+	padding: 0 2px 0 2px;
+	border-top-width: 1px;
+	border-top-color: inherit;
+	border-top-style: solid;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid tr.footrow-ltr td
+{
+	text-align: left;
+	border-right-width: 1px;
+	border-right-color: inherit;
+	border-right-style: solid;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid tr.footrow-rtl td
+{
+	text-align: right;
+	border-left-width: 1px;
+	border-left-color: inherit;
+	border-left-style: solid;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+    color :#E62E8A;
+}
+/* Pager*/
+.ui-jqgrid .ui-jqgrid-pager
+{
+	border-left: 0px none !important;
+	border-right: 0px none !important;
+	border-bottom: 0px none !important;
+	margin: 0px !important;
+	padding: 0px !important;
+	direction: rtl /*position: relative*/;
+	height: 25px;
+	white-space: nowrap;
+	overflow: hidden;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-pager-control
+{
+	position: relative;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-pg-table
+{
+	position: relative;
+	padding-bottom: 2px;
+	width: auto;
+	margin: 0em;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+	.ui-jqgrid .ui-pg-table td
+	{
+		font-weight: normal;
+		vertical-align: middle;
+		padding: 1px;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+        .ui-jqgrid .ui-pg-table td :hover
+        {
+            cursor:pointer;
+        } 
+.ui-jqgrid .ui-pg-button
+{
+	height: 19px !important;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+	.ui-jqgrid .ui-pg-button span
+	{
+		display: block;
+		margin: 1px;
+		float: left;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+	.ui-jqgrid .ui-pg-button:hover
+	{
+		padding: 0px;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+.ui-jqgrid .ui-state-disabled:hover
+{
+	padding: 1px;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-pg-input
+{
+	height: 13px;
+	font-size: .8em;
+	margin: 0em;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-pg-selbox
+{
+	font-size: .8em;
+	line-height: 18px;
+	display: block;
+	height: 18px;
+	margin: 0em;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-separator
+{
+	height: 18px;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	margin: 1px;
+	float: right;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-paging-info
+{
+	font-weight: normal;
+	height: 19px;
+	margin-top: 3px;
+	margin-right: 4px;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-jqgrid-pager .ui-pg-div
+{
+	padding: 1px 0;
+	float: left;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	position: relative;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+ 
+}
+
+.ui-jqgrid .ui-jqgrid-pager .ui-pg-button
+{
+	cursor: pointer;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-jqgrid-pager .ui-pg-div span.ui-icon
+{
+	float: left;
+	margin: 0 2px;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid td input, .ui-jqgrid td select .ui-jqgrid td textarea
+{
+	margin: 0em;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid td textarea
+{
+	width: auto;
+	height: auto;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-jqgrid-toppager
+{
+	border-left: 0px none !important;
+	border-right: 0px none !important;
+	border-top: 0px none !important;
+	margin: 0px !important;
+	padding: 0px !important;
+	position: relative;
+	height: 25px !important;
+	white-space: nowrap;
+	overflow: hidden;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+/*subgrid*/
+.ui-jqgrid .ui-jqgrid-btable .ui-sgcollapsed span
+{
+	display: block;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-subgrid
+{
+	margin: 0em;
+	padding: 0em;
+	width: 100%;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+	.ui-jqgrid .ui-subgrid table
+	{
+		table-layout: fixed;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+	.ui-jqgrid .ui-subgrid tr.ui-subtblcell td
+	{
+		height: 18px;
+		border-right-width: 1px;
+		border-right-color: inherit;
+		border-right-style: solid;
+		border-bottom-width: 1px;
+		border-bottom-color: inherit;
+		border-bottom-style: solid;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+	.ui-jqgrid .ui-subgrid td.subgrid-data
+	{
+		border-top: 0px none !important;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+	.ui-jqgrid .ui-subgrid td.subgrid-cell
+	{
+		border-width: 0px 0px 1px 0px;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+.ui-jqgrid .ui-th-subgrid
+{
+	height: 20px;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+/* loading */
+.ui-jqgrid .loading
+{
+	position: absolute;
+	top: 45%;
+	left: 45%;
+	width: auto;
+	z-index: 101;
+	padding: 6px;
+	margin: 5px;
+	text-align: center;
+	font-weight: bold;
+	display: none;
+	border-width: 2px !important;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .jqgrid-overlay
+{
+	display: none;
+	z-index: 100;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+* html .jqgrid-overlay
+{
+	width: expression(this.parentNode.offsetWidth+'px');
+	height: expression(this.parentNode.offsetHeight+'px');
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+* .jqgrid-overlay iframe
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: expression(this.parentNode.offsetWidth+'px');
+	height: expression(this.parentNode.offsetHeight+'px');
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+/* end loading div */
+/* toolbar */
+.ui-jqgrid .ui-userdata
+{
+	border-left: 0px none;
+	border-right: 0px none;
+	height: 21px;
+	overflow: hidden;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+/*Modal Window */
+.ui-jqdialog
+{
+	display: none;
+	width: 300px;
+	position: absolute;
+	padding: .2em;
+	font-size: 11px;
+	overflow: visible;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+	.ui-jqdialog .ui-jqdialog-titlebar
+	{
+		padding: .3em .2em;
+		position: relative;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+	.ui-jqdialog .ui-jqdialog-title
+	{
+		margin: .1em 0 .2em;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+	.ui-jqdialog .ui-jqdialog-titlebar-close
+	{
+		position: absolute;
+		top: 50%;
+		width: 19px;
+		margin: -10px 0 0 0;
+		padding: 1px;
+		height: 18px;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+
+		.ui-jqdialog .ui-jqdialog-titlebar-close span
+		{
+			display: block;
+			margin: 1px;
+			font-family: b nazanin;font-size: 15px;font-weight: bold;
+		}
+
+		.ui-jqdialog .ui-jqdialog-titlebar-close:hover, .ui-jqdialog .ui-jqdialog-titlebar-close:focus
+		{
+			padding: 0;
+			font-family: b nazanin;font-size: 15px;font-weight: bold;
+		}
+
+	.ui-jqdialog-content, .ui-jqdialog .ui-jqdialog-content
+	{
+		border: 0;
+		padding: .3em .2em;
+		background: none;
+		height: auto;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+		direction:rtl;
+	}
+
+	.ui-jqdialog .ui-jqconfirm
+	{
+		padding: .4em 1em;
+		border-width: 3px;
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		overflow: visible;
+		display: none;
+		height: 80px;
+		width: 220px;
+		text-align: center;
+		font-family: b nazanin;font-size: 15px;font-weight: bold;
+	}
+/* end Modal window*/
+/* Form edit */
+.ui-jqdialog-content .FormGrid
+{
+	margin: 0px;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+
+}
+
+.ui-jqdialog-content .EditTable
+{
+	width: 100%;
+	margin-bottom: 0em;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqdialog-content .DelTable
+{
+	width: 100%;
+	margin-bottom: 0em;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.EditTable td input, .EditTable td select, .EditTable td textarea
+{
+	margin: 0em;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.EditTable td textarea
+{
+	width: auto;
+	height: auto;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqdialog-content td.EditButton
+{
+	text-align: right;
+	border-top: 0px none;
+	border-left: 0px none;
+	border-right: 0px none;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqdialog-content td.navButton
+{
+	text-align: center;
+	border-left: 0px none;
+	border-top: 0px none;
+	border-right: 0px none;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqdialog-content input.FormElement
+{
+	padding: .3em;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+	 
+}
+
+.ui-jqdialog-content .data-line
+{
+	padding-top: .1em;
+	border: 0px none;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqdialog-content .CaptionTD
+{
+	text-align: left;
+	vertical-align: middle;
+	border: 0px none;
+	padding: 2px;
+	white-space: nowrap;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqdialog-content .DataTD
+{
+	padding: 2px;
+	border: 0px none;
+	vertical-align: top;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqdialog-content .form-view-data
+{
+	white-space: pre;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.fm-button
+{
+	display: inline-block;
+	margin: 0 4px 0 0;
+	padding: .4em .5em;
+	text-decoration: none !important;
+	cursor: pointer;
+	position: relative;
+	text-align: center;
+	zoom: 1;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.fm-button-icon-left
+{
+	padding-left: 1.9em;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.fm-button-icon-right
+{
+	padding-right: 1.9em;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.fm-button-icon-left .ui-icon
+{
+	right: auto;
+	left: .2em;
+	margin-left: 0;
+	position: absolute;
+	top: 50%;
+	margin-top: -8px;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.fm-button-icon-right .ui-icon
+{
+	left: auto;
+	right: .2em;
+	margin-left: 0;
+	position: absolute;
+	top: 50%;
+	margin-top: -8px;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+#nData, #pData
+{
+	float: left;
+	margin: 3px;
+	padding: 0;
+	width: 15px;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+/* End Eorm edit */
+/*.ui-jqgrid .edit-cell {font-family:Tahoma;}*/
+.ui-jqgrid .selected-row, div.ui-jqgrid .selected-row td
+{
+	font-style: normal;
+	border-left: 0px none;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+/* Tree Grid */
+.ui-jqgrid .tree-wrap
+{
+	float: left;
+	position: relative;
+	height: 18px;
+	white-space: nowrap;
+	overflow: hidden;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .tree-minus
+{
+	position: absolute;
+	height: 18px;
+	width: 18px;
+	overflow: hidden;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .tree-plus
+{
+	position: absolute;
+	height: 18px;
+	width: 18px;
+	overflow: hidden;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .tree-leaf
+{
+	position: absolute;
+	height: 18px;
+	width: 18px;
+	overflow: hidden;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .treeclick
+{
+	cursor: pointer;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+/* moda dialog */
+* iframe.jqm
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: expression(this.parentNode.offsetWidth+'px');
+	height: expression(this.parentNode.offsetHeight+'px');
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid-dnd tr td
+{
+	border-right-width: 1px;
+	border-right-color: inherit;
+	border-right-style: solid;
+	height: 20px;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+/* RTL Support */
+.ui-jqgrid .ui-jqgrid-title-rtl
+{
+	float: right;
+	margin: .1em 0 .2em;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-jqgrid-hbox-rtl
+{
+	float: right;
+	padding-left: 20px;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-jqgrid-resize-ltr
+{
+	float: right;
+	margin: -2px -2px -2px 0px;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-jqgrid-resize-rtl
+{
+	float: left;
+	margin: -2px 0px -1px -3px;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-sort-rtl
+{
+	left: 0px;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .tree-wrap-ltr
+{
+	float: right;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .tree-wrap-rtl
+{
+	float: right;
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+
+.ui-jqgrid .ui-ellipsis
+{
+	text-overflow: ellipsis;
+	-moz-binding: url('ellipsis-xbl.xml#ellipsis');
+	font-family: b nazanin;font-size: 15px;font-weight: bold;
+}
+.the-wrapper{
+  height: auto !important; /* for real browsers*/
+  height: 601px;           /* IE6 will use this a min-height. Use any height you need - you can even set this using JavaScript depending on the browser window height */
+  min-height: 601px;       /* for real browsers - same value as height */
+}

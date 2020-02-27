@@ -1,0 +1,742 @@
+﻿@{
+    ViewBag.Title = "ثبت نام متقاضی";
+    Layout = "~/Views/Shared/Base_Layout.cshtml";
+}
+
+<link href="~/Styles/sweetalert.css" rel="stylesheet" />
+<link href="~/Styles/kendo.common.min.css" rel="stylesheet" />
+<link href="~/Styles/kendo.default.min.css" rel="stylesheet" />
+<style>
+    .se-pre-con {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url("../Image/loadergifNew.gif") center no-repeat #4ca22f;
+    }
+
+    .Myprogress {
+        height: 20px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        background-color: #70d629;
+        opacity: 0.5
+    }
+
+    /* The message box is shown when the user clicks on the password field */
+    #message {
+        display: none;
+        color: #000;
+        position: relative;
+        padding: 20px;
+        margin-top: 10px;
+    }
+
+        #message p {
+            padding: 10px 35px;
+            font-size: 18px;
+        }
+
+    /* Add a green text color and a checkmark when the requirements are right */
+    .valid {
+        color: green;
+    }
+
+        .valid:before {
+            position: relative;
+            content: "✔";
+        }
+
+    /* Add a red text color and an "x" when the requirements are wrong */
+    .invalid {
+        color: red;
+        margin: 10px;
+    }
+
+        .invalid:before {
+            position: relative;
+            content: "✖";
+        }
+
+    .image {
+        opacity: 1;
+        width: 100%;
+        height: 200px;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    .middle {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 64%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .Imgtext {
+        background-color: #077ed2;
+        opacity: 0.3;
+        font-family: 'B Yekan';
+        font-size: 10px;
+        border-radius: 100px;
+        color: white;
+        font-size: 16px;
+        padding: 16px 32px;
+    }
+
+    .containerimg:hover .image {
+        opacity: 5;
+    }
+
+    .containerimg:hover .middle {
+        opacity: 1;
+    }
+
+    .btn {
+        font-size: 15px;
+        font-family: b nazanin;
+    }
+
+    .glass {
+        /* background styles */
+        position: relative;
+        display: inline-block;
+        padding: 15px 25px;
+        background-color: green; /*for compatibility with older browsers*/
+        background-image: linear-gradient(green,lightgreen);
+        /* text styles */
+        text-decoration: none;
+        color: #fff;
+        font-size: 25px;
+        font-family: sans-serif;
+        font-weight: 100;
+    }
+
+        .glass:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: calc(100% - 4px);
+            height: 50%;
+            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.2));
+        }
+
+        .glass:hover {
+            background: linear-gradient(#073,#0fa);
+        }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: inherit;
+    }
+
+    html {
+        box-sizing: border-box;
+    }
+</style>
+<html>
+
+<body style="padding-bottom:200px">
+    <div class="se-pre-con"></div>
+
+    <br />
+    <input autocomplete="off" id="UserID" value="0" readonly="readonly" style="display:none;opacity:0.0;" />
+
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+            <div id="Pic1" class="col-sm-2" style="text-align: center; background-color: #70d629; float: right">
+                <img src="../Image/1.png" style="width: 40%;  " />
+                <h4>اطلاعات اولیه</h4>
+            </div>
+            <div id="Pic2" class="col-sm-2" style="text-align: center; background-color: #70d629; float: right; opacity: 0.5; ">
+                <img src="../Image/2.png" style="width: 40%; " />
+                <h4>دریافت رمز عبور</h4>
+            </div>
+            <div id="Pic3" class=" col-sm-2" style="text-align: center; background-color: #70d629; float: right; opacity: 0.5; ">
+                <img src="../Image/3.png" style="width: 40%; " />
+                <h4>پایان</h4>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class=" col-sm-10">
+            <div id="Step1" class="Myprogress col-sm-2" style="text-align: center; float: right;padding:0px">
+            </div>
+            <div id="Step2" class="Myprogress col-sm-2" style="text-align: center; float: right; padding: 0px">
+            </div>
+            <div id="Step3" class="Myprogress col-sm-2" style="text-align: center; float: right; padding: 0px">
+            </div>
+        </div>
+
+    </div>
+
+    <br /><br />
+    <div id="StartStep">
+
+        <br />
+        <div class="row" id="codemeliMoboile">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-3">
+                <input autocomplete="off" type="text" id="NationalCode" class="form-control NationalCode" style="direction: ltr;   width: 300px;" onchange="fncheckedNationalCode(0)" placeholder="شــــمــاره مــلـــــی" maxlength="10" onkeypress="return OnlyNumeric(event)" />
+            </div>
+            <div class="col-sm-3">
+                <input autocomplete="off" type="text" id="MobileNumber" class="form-control MobileNumber" style="direction: ltr;   width: 300px;" placeholder="شــمــاره هــمــراه" onkeypress="return OnlyNumeric(event)" maxlength="11" />
+            </div>
+            <div class="col-sm-3">
+                @Html.DropDownList("btnOrganizations", (SelectList)ViewBag.Organizations, "سازمان", new { style = "width:70%; ", @class = "form-control", id = "btnOrganizations", })
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8" style="background-color: #c7f5a7;padding:10px">
+                <div class="col-sm-6">
+                    <div style="margin:5px">
+                        <input autocomplete="off" id="txtname" type="text" class="form-control" style="width:300px" placeholder="نام" />
+                    </div>
+                    <div style="margin:5px">
+                        <input autocomplete="off" type="text" id="txtfamily" class="form-control" style=" width: 300px;" placeholder="نــام خــانـوادگـــی" />
+                    </div>
+                    <div style="margin:5px">
+                        <label class="row" style="font-family:'B Yekan'; margin-right:12%;">
+                            جنسیت :
+                        </label>
+                        <label class="containerRadio" style="margin-right:5%;">
+                            زن
+                            <input type="radio" id="chkMss" value="2" checked="checked" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="containerRadio" style="margin-right:5%;">
+                            مرد
+                            <input type="radio" id="chkMr" value="1" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div style="margin:5px">
+                        <input autocomplete="off" type="text" id="dateBirth" class="form-control" style=" width: 300px;" placeholder="تــــاریـخ تــــولــــد" onkeypress="return NoneType(event)" />
+                    </div>
+
+                    <div style="margin:5px">
+                        <input autocomplete="off" type="text" id="txtPhoneNumber" class="form-control PhoneNumber" style=" direction: ltr; width: 300px;" placeholder="تلفن محل کار" onkeypress="return OnlyNumeric(event)" />
+                    </div>
+                    <div style="margin:5px">
+                        <input autocomplete="off" type="text" id="txtEmail" dir="ltr" class="form-control" style=" width: 300px;" placeholder="پست الکترونیک" />
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="containerimg" style="text-align:center; height:20%; border:thin; width:100%;">
+                        <fieldset style="border: dashed 1px; min-height: 200px;width: 70%; ">
+                            <img src="../Image/DefaultPic.png" alt="DefaultPic" id="UpImgGeneralPic1" style=" cursor: pointer; width :60%" />
+                            <span hidden="hidden"><input autocomplete="off" type="file" name="File" id="UpImgGeneralPic" onchange="UpFilesPreview(this);" hidden="hidden" /></span>
+                            <img id="ViewFilesGeneralPic" class="image" height='200' style="border:none !important;width:100%" hidden="hidden" />
+                            <div class="middle">
+                                <div class="Imgtext" style=" cursor: pointer;" onclick="UpFilesPreview(this);">انتخاب کنید</div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8" style="background-color: #c7f5a7;padding:10px">
+                <fieldset style="padding: 10px; border: 2px solid #ccc0c0">
+                    <legend>آدرس محل سکونت</legend>
+                    <br />
+                    <label style="color: #acb6c0; ">خیابان -کوچه - پلاک ...</label>
+                    <textarea id="txtAddressHamkaran" style=" width: 100%;" class="form-control" placeholder="خیابان -کوچه - پلاک ....">  </textarea>
+                </fieldset>
+
+            </div>
+        </div>
+
+    </div>
+
+    <br /><br />
+    <div id="WarningTxt" style="display: none; margin-right: 300px; position: absolute;">
+        <img src="~/Image/warning.png" style="width:50px;" />
+        <img src="~/Image/warningText.png" style="width:600px;" />
+    </div>
+
+    <div style="margin-right: 85%;margin-top:-40px; position: fixed; ">
+        <img src="~/Image/loadergifNew.gif" id="loadergif" width="50" style="display:none;margin-right:30%;" />
+
+        <input autocomplete="off" class="btn btn-success" id="btnStepbyStep" type="button" style="  width: 140px;" value="ثبت و مرحله بعد" onclick="fnStepbyStep()" />
+    </div>
+
+    <div style="margin-right: 85%; position: fixed; margin-top:10px;">
+        <input autocomplete="off" class="btn btn-warning" id="btnCancel" type="button" value="انصراف و شروع مجدد" onclick="fnCancel()" style="display: none; width: 140px;" />
+    </div>
+
+    @*مرحله دوم*@
+
+    <div id="MemberDetails" class="row" style="padding:30px;display:none ">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8" style="background-color: #c7f5a7;padding:30px">
+            <div class=" row" style="direction: rtl; font-family: 'B Nazanin'; font-size: medium; ">
+                <div class="col-sm-4">
+                    <label>نام کاربری:</label>
+                    <span id="txtUserName" style="font-weight: bold; padding: 10px; font-size: 1.2em;"></span>
+                </div>
+                <div class="col-sm-4">
+                    <label for="psw">رمز عبور</label>
+                    <input type="text" id="psw" name="psw"
+                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="" required autocomplete="off" onkeypress="return OnlyLatin(event)" style="font-family:Tahoma" />
+                </div>
+            </div>
+            <br />
+            <div id="message" class=" row" style="direction: rtl; font-family: 'B Nazanin'; font-size: medium; ">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-7">
+                    <h4 style="color:green">رمز عبور باید شامل موارد زیر باشد:</h4>
+                    <span id="letter" class="invalid">حداقل یک حرف کوچک</span>
+                    <span id="capital" class="invalid">حداقل یک حرف  بزرگ</span>
+                    <span id="number" class="invalid">حداقل یک عدد</span>
+                    <span id="length" class="invalid">حداقل 8 کاراکتر</span>
+                </div>
+            </div>
+            <br />
+
+        </div>
+    </div>
+
+    @*مرحله آخر*@
+
+    <div id="Final" class="row" style="padding:30px;display:none">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8" style="background-color: #c7f5a7;padding:30px; margin-left:5%;">
+            <h1 style="font-family:'B Yekan'">ثبت نام شما با موفقیت انجام شد</h1>
+            <a href="/Home/Login" style="cursor:pointer"><span><img src="~/Image/login-512.png" width="25" style="margin-right:50%;" /></span><span class="glass" style="font-size: 1.1em; font-weight: bold;">ورود به سامانه  </span></a>
+        </div>
+    </div>
+
+</body>
+</html>
+@section scripts{
+
+    <script src="~/Scripts/sweetalert-dev.js"></script>
+    <script src="~/Scripts/kendo.all.min.js"></script>
+    <script src="~/Scripts/maskedinput.js"></script>
+
+    <script>
+        $(window).load(function () {
+            $(".se-pre-con").fadeOut("slow");
+        });
+        $(document).ready(function () {
+
+            $.mask.definitions['A'] = "[9]";
+
+            $('.NationalCode').mask("999-999999-9");
+            $('.MobileNumber').mask("(0A99)-9999999");
+            $('.PhoneNumber').mask("(099)-99999999");
+        });
+
+        function NoneType(e) { return false; }
+
+        //#region Only for Latin letters in password
+
+        function OnlyLatin(e) {
+            if (e.which < 200) {
+                return true;
+            }
+            else {
+                swal("لطفا صفحه کلید خود را انگلیسی کنید", "", "warning");
+                return false;
+            }
+        }
+
+        //#endregion Only for Latin letters in password
+
+        var myInput = document.getElementById("psw");
+        var letter = document.getElementById("letter");
+        var letterOk = 0;
+        var capital = document.getElementById("capital");
+        var capitalOk = 0;
+        var number = document.getElementById("number");
+        var numberOk = 0;
+        var length = document.getElementById("length");
+        var lengthOk = 0;
+        var PassOk = 0;
+
+        $("#dateBirth").kendoDatePicker();
+
+        var StepbyStep = 0;
+        var txtname;
+        var txtfamily;
+        var dateBirth;
+        var txtPhoneNumber;
+        var NationalCode;
+
+        var MobileNumber;
+        var OrganizationIDSabt;
+        var txtEmail;
+
+        var txtAddress;
+
+
+        myInput.onfocus = function () {
+            document.getElementById("message").style.display = "block";
+        }
+
+        myInput.onblur = function () {
+            document.getElementById("message").style.display = "none";
+        }
+
+        myInput.onkeyup = function () {
+            var lowerCaseLetters = /[a-z]/g;
+            if (myInput.value.match(lowerCaseLetters)) {
+                letter.classList.remove("invalid");
+                letter.classList.add("valid");
+                letterOk = 1;
+            } else {
+                letter.classList.remove("valid");
+                letter.classList.add("invalid");
+                letterOk = 0;
+            }
+
+            var upperCaseLetters = /[A-Z]/g;
+            if (myInput.value.match(upperCaseLetters)) {
+                capital.classList.remove("invalid");
+                capital.classList.add("valid");
+                capitalOk = 1;
+            } else {
+                capital.classList.remove("valid");
+                capital.classList.add("invalid");
+                capitalOk = 0;
+            }
+
+            var numbers = /[0-9]/g;
+            if (myInput.value.match(numbers)) {
+                number.classList.remove("invalid");
+                number.classList.add("valid");
+                numberOk = 1;
+            } else {
+                number.classList.remove("valid");
+                number.classList.add("invalid");
+                capitalOk = 0;
+            }
+
+            if (myInput.value.length >= 8) {
+                length.classList.remove("invalid");
+                length.classList.add("valid");
+                lengthOk = 1;
+            } else {
+                length.classList.remove("valid");
+                length.classList.add("invalid");
+                capitalOk = 0;
+            }
+        }
+        $("#Step2").html('<span class="progress-bar progress-bar-striped active" role="progressbar" ></span>')
+        $("#Step3").html('<span class="progress-bar progress-bar-striped active" role="progressbar" ></span>')
+        $("#Step1").html('<span class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%; "></span>')
+
+        //#region Only Numeric
+
+        function OnlyNumeric(e) {
+
+            if ((e.which < 48 || e.which > 57)) {
+                if (e.which == 8 || e.which == 46 || e.which == 0) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+
+        //#endregion Only Numeric
+
+        function fncheckedNationalCode(e) {
+             NationalCode = $("#NationalCode").val().replace('-', '').replace('-', '');
+            $.ajax({
+                url: "/Registration/txtNationalCoderepeat",
+                data: { NationalCode1: NationalCode },
+                type: "post",
+                datatype: "json",
+                async: true,
+                success: function (data) {
+                    if (data == "RepeatNationalCode") {
+                        swal("شما قبلا ثبت نام کرده اید", "", "warning");
+                        $("#NationalCode").val("");
+                        return false;
+
+                    }
+                    if (data == "Edit") {
+                        $.ajax({
+                            url: "/Registration/GetDataForm",
+                            data: { NationalCode1: NationalCode },
+                            type: "post",
+                            datatype: "json",
+                            async: true,
+                            success: function (data) {
+                                if (data) {
+                                    $("#MobileNumber").val(data.txtMobileNumber);
+                                    $("#btnOrganizations").val(data.Organization);
+                                    $("#btnStepbyStep").attr('value', 'مرحله بعد');
+
+
+                                }
+                            }
+                        });
+                    }
+                    if (data == "NotCorrect") {
+                        swal("کد ملی صحیح نیست")
+                        $("#NationalCode").val("");
+                        if (e == 1) location.reload();
+                        return false;
+                    }
+                    if (data == "TenDigits") {
+                        swal("طول کد ملی وارد شده باید 10 کاراکتر باشد")
+                        $("#NationalCode").val("");
+                        if (e == 1) location.reload();
+                        return false;
+                    }
+                }
+            });
+        }
+
+        //#endregion amaliyate Check Code Melli
+
+        //#region Save
+
+        function fnStepbyStep() {
+
+
+
+            var txtNationalCode = $("#NationalCode").val().replace('(', '').replace(')', '').replace('-', '').replace('-', '');
+
+
+            var btnOrganizations = $("#btnOrganizations").val();
+
+            if (StepbyStep == 0) {
+
+
+                $("#loadergif").show();
+                NationalCode = $("#NationalCode").val().replace('-', '');
+                MobileNumber = $("#MobileNumber").val().replace('(', '').replace(')', '').replace('-', '');
+
+                OrganizationIDSabt = $("#btnOrganizations").val();
+
+
+
+                if (NationalCode == "") { swal("کد ملی را وارد نمایید!"); $("#loadergif").hide(); return (false); }
+                fncheckedNationalCode(1)
+                if (MobileNumber == "") { swal("شماره همراه را وارد نمایید!"); $("#loadergif").hide(); return (false); }
+
+
+                if (OrganizationIDSabt == "") { swal("سازمان راانتخاب نمایید!"); $("#loadergif").hide(); return (false); }
+
+                var SaveConfirm = 1;
+                if ($("#txtname").val() == "") { $("#txtname").css('background-color', '#94d8a6'); SaveConfirm = 0; $("#loadergif").hide(); } else { txtname = $("#txtname").val(); $("#txtname").css('background-color', '') }
+                if ($("#txtfamily").val() == "") { $("#txtfamily").css('background-color', '#94d8a6'); SaveConfirm = 0; $("#loadergif").hide(); } else { txtfamily = $("#txtfamily").val(); $("#txtfamily").css('background-color', '') }
+                var chkMss = $('#chkMss').is(":checked") ? true : false;
+                var chkMr = $('#chkMr').is(":checked") ? true : false;
+                if (chkMss == false && chkMr == false) {
+                    alert("جنسیت خود را مشخص کنید");
+                    return false;
+                }
+
+
+                OrganizationIDSabt = $("#btnOrganizations").val()
+                if ($("#dateBirth").val() == "") { $("#dateBirth").css('background-color', '#94d8a6'); SaveConfirm = 0; } else { dateBirth = $("#dateBirth").val(); $("#dateBirth").css('background-color', '') }
+                if ($("#txtPhoneNumber").val() == "") { $("#txtPhoneNumber").css('background-color', '#94d8a6'); SaveConfirm = 0; } else { txtPhoneNumber = $("#txtPhoneNumber").val().replace('(', '').replace(')', '').replace('-', ''); $("#txtPhoneNumber").css('background-color', '') }
+                txtEmail = $("#txtEmail").val();
+
+                var formData = new FormData();
+                var ProfImage = $("#UpImgGeneralPic").get(0).files; //عکس پروفایل
+                formData.append("UpImgGeneralPic", ProfImage[0]);
+                if (SaveConfirm == 1) {
+
+                    OrganizationIDSabt = $("#btnOrganizations").val()
+                    txtAddress = $("#txtAddressHamkaran").val();
+
+                    if (SaveConfirm == 1) {
+                        $.ajax({
+                            url: "/Registration/Save",
+                            data: JSON.stringify({
+                                NationalCode: NationalCode, MobileNumber: MobileNumber.replace('(', '').replace(')', '').replace('-', ''), OrganizationIDSabt: OrganizationIDSabt, txtname: txtname, txtfamily: txtfamily, chkMss: chkMss,
+                                dateBirth: dateBirth, txtPhoneNumber: txtPhoneNumber, txtEmail: txtEmail, txtAddress: txtAddress
+                            }),
+
+                            type: "post",
+                            datatype: "json",
+                            contentType: "application/json; charset=utf-8",
+                            async: true,
+                            success: function (dataham) {
+                                if (dataham == "rptNational") {
+                                    return false;
+                                }
+                                else {
+
+
+                                    $("#UserID").val(dataham.UserID);
+
+                                    //ذخیره عکس پروفایل
+                                    formData.append("ID", dataham.UserID);
+                                    var ajaxRequest = $.ajax({
+                                        url: "/Registration/AddImage",
+                                        data: formData,
+                                        contentType: false,
+                                        processData: false,
+                                        type: 'POST',
+                                        datatype: "json",
+                                        async: false,
+                                        success: function (data2) {
+                                            if (data2 == "DataError") {
+                                                swal("حجم عکس باید کمتر از 100کیلوبایت باشد", "", "error")
+                                                return false;
+                                            }
+                                            if (data2 == false) {
+                                                swal("ذخيره انجام نشد ");
+                                                $("#loadergif").hide();
+                                            }
+                                            else {
+                                                $("#StartStep").hide('1000');
+                                                $("#MemberDetails").show('1000');
+
+
+                                                $("#txtNationalCode").val(NationalCode);
+                                                $("#txtMobileNumber").val(MobileNumber);
+
+
+                                                $("#btnCancel").show();
+                                                $("#WarningTxt").hide(500);
+                                                StepbyStep = 1;
+
+                                                $("#Pic2").css('opacity', '')
+                                                $("#Pic1").css('opacity', '0.5');
+                                                $("#Step2").html('<span class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%; "></span>')
+                                                $("#Step1").html('<span class="progress-bar progress-bar-striped active" role="progressbar" ></span>')
+                                                $("#loadergif").hide();
+
+                                                $("#btnStepbyStep").attr('value', 'ثبت نهایی')
+
+                                                $("#txtUserName").text(NationalCode);
+                                            }
+                                        }
+                                    });
+                                    //ذخیره عکس پروفایل
+                                }
+                            }
+                        });
+                    }
+
+
+                }
+            }
+
+
+            if (StepbyStep == 1) {
+                var psw = $("#psw").val();
+                if (psw != "") {
+                    FnFinalSave();
+                }
+                else {
+
+                }
+            }
+
+        }
+
+        //#endregion Save
+
+        //Upload pic General form
+        function UpFilesPreview(input) {
+            $("#UpImgGeneralPic").trigger("click");
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#ViewFilesGeneralPic').attr('src', e.target.result);
+                    $('#ViewFilesGeneralPic').show();
+                }
+                reader.readAsDataURL(input.files[0]);
+            } fnChnGeneralPic();
+        }
+
+        function fnChnGeneralPic() {
+            if ($("#UpImgGeneralPic1").val != "") {
+                $("#UpImgGeneralPic1").hide();
+            }
+        }
+
+        function FnFinalSave() {
+            PassOk = letterOk + capitalOk + numberOk + lengthOk;
+            if (PassOk != 4) {
+                swal("رمز عبور انتخابی صحیح نیست!");
+                return false;
+            }
+            else {
+                var _userID = $("#UserID").val();
+                var txtPassword = $("#psw").val();
+
+                alert(123)
+                $.ajax({
+                    url: "/Registration/SavePassword",
+                    data: { NationalCode: NationalCode, txtPassword: txtPassword },
+                    type: "post",
+                    datatype: "json",
+                    async: false,
+                    success: function (data) {
+                        if (data == "ghablanSabtShode") {
+                            swal("قبلا ثبت نهایی شده اید");
+                            $("#MemberDetails").hide();
+                            $("#Pic3").css('opacity', '')
+                            $("#Pic2").css('opacity', '0.5');
+                            //$("#Pic5").css('-webkit-filter', 'grayscale(0%)')
+                            //$("#Pic4").css('-webkit-filter', 'grayscale(100%)')
+                            $("#Step3").html('<span class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%; "></span>')
+                            $("#Step2").html('<span class="progress-bar progress-bar-striped active" role="progressbar" ></span>')
+                            return false;
+                        }
+                        if (data) {
+                            $("#Final").show(1000);
+                            $("#Pic3").css('opacity', '')
+                            $("#Pic2").css('opacity', '0.5');
+                            //$("#Pic5").css('-webkit-filter', 'grayscale(0%)')
+                            //$("#Pic4").css('-webkit-filter', 'grayscale(100%)')
+                            $("#Step3").html('<span class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%; "></span>')
+                            $("#Step2").html('<span class="progress-bar progress-bar-striped active" role="progressbar" ></span>')
+                            $("#MemberDetails").hide(1000);
+                        }
+                        else {
+                            swal("خطا!مجددا تلاش نمایید")
+                        }
+                    }
+                });
+
+            }
+        }
+
+        function fnCancel() {
+            var Code = 0;
+            Code = $("#NationalCode").val().replace('-', '').replace('-', '');
+            $.ajax({
+                url: "/Registration/txtNationalCoderepeat",
+                data: { NationalCode1: Code },
+                type: "post",
+                datatype: "json",
+                async: true,
+                success: function (data) {
+                    if (data) {
+                        location.reload();
+                    }
+                }
+            });
+        }
+ 
+    </script>
+}

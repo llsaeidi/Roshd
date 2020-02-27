@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "";
+    Layout = null;
+}
+
+<h2>Organizatons</h2>
+
+<link rel="stylesheet" href="../Content/jquery-ui/redmond/jquery-ui-1.8.14.custom.css" type="text/css" />
+<link rel="stylesheet" href="../Content/jquery-grid/ui.jqgrid.css" type="text/css" />
+
+<br />
+<div class="row">
+    <center>
+        <div class="jqGrid col-lg-10">
+            <table id="jqGridTest" class="scroll"></table>
+            <div id="jqGridTestPager"></div>
+        </div>
+    </center>
+</div>
+<script src="~/Scripts/jquery-1.6.2.min.js"></script>
+<script src="../Scripts/jquery-grid/grid.locale-en.js" type="text/javascript"></script>
+<script src="../Scripts/jquery-grid/jquery.jqGrid.min.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+    alert(0)
+        $("#jqGridTest").jqGrid({
+            url: "/LookUp/LoadGrid",
+            datatype: "json",
+            async: false,
+            caption: "نوع آموزشی ",
+            mtype: "POST",
+            scroll: true,
+            beforeRequest: function () {
+
+                //responsive_jqgrid($(".jqGrid"));
+            },
+            colNames: ["", "نام فارسی"],
+            colModel: [
+                       { name: "ID", index: "ID", width: 50, align: "right", editable: true, hidden: true, key: true },
+                       { name: "Title", index: "Title", width: 50, align: "right", editrules: { required: true }, editable: true, edittype: "text", editoptions: { style: "width: 350px", } },
+            ],
+            width: 500,
+            height: 200,
+            toppager: true,
+            pager: $("#jqGridTestPager"),
+            rowNum: 20,
+            rownumbers: true,
+            rowList: [20, 25, 30],
+            viewrecords: true,
+            sortname: "Title",
+            sortorder: "asce",
+            onSelectRow: function (id) {
+            },
+        }).navGrid("#jqGridTestPager",
+      { refresh: true, add: true, edit: true, del: true, search: true, addtext: 'افزودن  |', edittext: 'ويرايش  |',deltext:'حذف' },
+                   {
+                       width: 'auto', url: '@Url.Action("InsertGridTest", "LookUp")'
+                   },
+                   {
+                       width: 'auto', url: '@Url.Action("InsertGridTest", "LookUp")'
+                   },
+                       {
+                           beforeSubmit: function (form, obj) {
+                               $.ajax({
+                                   url: '/LookUp/DeleteGridTest/',
+                                   data: { PTable: 'dbo.Organizations', PField: 'ID', PCode: form },
+                                   cache: false,
+                                   type: "Post",
+                                   success: function (data) {
+                                       if (data == "1") {
+                                           // گزینه قابل حذف نیست
+                                           swal('اخطار : اطلاعات مرتبط وجود دارد', "", "warning")
+
+                                           $("#jqGridTest").trigger("reloadGrid");
+                                       }
+                                       else {
+                                           // گزینه حذف می شود
+                                           alert('اطلاعات با موفقیت حذف شد', "", "Success");
+                                           $("#delmodjqGridTest").hide();
+                                           $("#jqGridTest").trigger("reloadGrid");
+                                       }
+                                   }
+                               });
+                           }
+                       },
+                   { sopt: ["cn"] }
+               ).trigger("reloadGrid");
+
+
+
+    });
+
+    function responsive_jqgrid(jqgrid) {
+        jqgrid.find('.ui-jqgrid').addClass('clear-margin span12').css('width', '');
+        jqgrid.find('.ui-jqgrid-view').addClass('clear-margin span12').css('width', '');
+        jqgrid.find('.ui-jqgrid-view > div').eq(1).addClass('clear-margin span12').css('width', '').css('min-height', '0');
+        jqgrid.find('.ui-jqgrid-view > div').eq(2).addClass('clear-margin span12').css('width', '');
+        jqgrid.find('.ui-jqgrid-sdiv').addClass('clear-margin span12').css('width', '');
+        jqgrid.find('.ui-jqgrid-pager').addClass('clear-margin span12').css('width', '');
+        jqgrid.find('.ui-jqgrid-bdiv').addClass('clear-margin span12').css('width', '');
+        jqgrid.find('.ui-jqgrid-hdiv').addClass('clear-margin span12').css('width', '');
+        jqgrid.find('.ui-jqgrid-toppager').addClass('clear-margin span12').css('width', '');
+    }
+
+</script>
